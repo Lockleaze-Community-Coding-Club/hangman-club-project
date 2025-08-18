@@ -35,8 +35,8 @@ Hangman is a word guessing game where the player tries to uncover a secret word 
 
    ## 📘 Documentation
 
-- [Virtual Machine Setup Guide (Markdown)](docs/VM_SETUP.md)  
-- [Virtual Machine Setup Guide (Word)](docs/vm_setup_guide.docx) 
+- [Virtual Machine Setup Guide (Markdown)](/VM_SETUP.md)  
+- [Virtual Machine Setup Guide (Word)](/vm_setup_guide.docx) 
    ```bash
    python -m venv venv
    source venv/bin/activate  # Windows: venv\Scripts\activate
