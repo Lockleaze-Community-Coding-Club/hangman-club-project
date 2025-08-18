@@ -13,6 +13,10 @@ Hangman is a word guessing game where the player tries to uncover a secret word 
 
 ## 🔧 Project Features
 
+  ## 📘 Documentation
+
+  - [Hangman Architecture and Test Plan (Markdown)](/docs/Hangman Architecture and Test Plan.pptx)
+
 - Command-line interface (CLI)
 - ASCII art visualizations
 - Random word selection
@@ -35,8 +39,9 @@ Hangman is a word guessing game where the player tries to uncover a secret word 
 
    ## 📘 Documentation
 
-- [Virtual Machine Setup Guide (Markdown)](/docs/VM_SETUP.md)  
-- [Virtual Machine Setup Guide (Word)](/docs/vm_setup_guide.docx) 
+- [Virtual Machine Setup Guide (Markdown)](/docs/VM_SETUP.md) 
+- [CICD Pipeline Setup Test (Markdown)](/docs/CI_CD_Testing_Hangman_Club_Project.md)
+
    ```bash
    python -m venv venv
    source venv/bin/activate  # Windows: venv\Scripts\activate
