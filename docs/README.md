@@ -31,11 +31,20 @@ Hangman is a word guessing game where the player tries to uncover a secret word 
    cd hangman-project
    ```
 
-2. **Create a virtual environment** (optional but recommended):
+2. **Create a virtual environment** :
+
+   ## 📘 Documentation
+
+- [Virtual Machine Setup Guide (Markdown)](docs/VM_SETUP.md)  
+- [Virtual Machine Setup Guide (Word)](docs/vm_setup_guide.docx) 
    ```bash
    python -m venv venv
    source venv/bin/activate  # Windows: venv\Scripts\activate
-   ```
+
+   Run the initial tests to confirm everything works
+   bash
+   pytest
+   '''
 
 3. **Install requirements** (if any):
    ```bash
