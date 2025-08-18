@@ -13,17 +13,17 @@ Hangman is a word guessing game where the player tries to uncover a secret word 
 
 ## 🔧 Project Features
 
-  ## 📘 Documentation
+  ## 📘 Documentation :
 
-  - [Hangman Architecture and Test Plan (Markdown)](/docs/Hangman Architecture and Test Plan.pptx)
+  - [Hangman Architecture and Test Plan (Markdown)](</docs/Hangman Architecture and Test Plan.pptx>)
 
-- Command-line interface (CLI)
-- ASCII art visualizations
-- Random word selection
-- Input validation and game loop
-- Win/loss detection
-- Full unit test coverage
-- Optional enhancements: difficulty levels, multiplayer, and GUI with `tkinter`
+         - Command-line interface (CLI)
+         - ASCII art visualizations
+         - Random word selection
+         - Input validation and game loop
+         - Win/loss detection
+         - Full unit test coverage
+         - Optional enhancements: difficulty levels, multiplayer, and GUI with `tkinter`
 
 ---
 
@@ -35,7 +35,7 @@ Hangman is a word guessing game where the player tries to uncover a secret word 
    cd hangman-project
    ```
 
-2. **Create a virtual environment** :
+2. **Create a virtual environment and test the CI/CD Pipeline** :
 
    ## 📘 Documentation
 
