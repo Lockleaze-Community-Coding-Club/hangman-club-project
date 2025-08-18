@@ -6,65 +6,157 @@ This guide explains how to set up a virtual machine (VM) with all required softw
 
 ## 1. Choose a Virtualization Tool
 Recommended options:
-- **VirtualBox** (free, open source)
-- **VMware Workstation Player** (free for personal use)
+
+- **VMware Workstation Pro** (free for personal use - this will require creation of a Broadcom account- select version 17.6.4 - to be able to click "I agree to the Terms and Conditions and download the software, you will need to click on the Terms and Conditions hyperlink)
 
 Download and install one on your host computer.
 
 ---
 
-## 2. Create a New VM
-- Allocate at least **2 CPUs** and **4GB RAM**.
-- Assign at least **20GB disk space**.
-- Choose an operating system:
-  - Ubuntu Linux (recommended for CI/CD pipelines)
-
----
-
-## 3. Install the OS
+  ## 2. Create a New VM
 - Download Ubuntu ISO (https://ubuntu.com/download/desktop).
-- Attach the ISO to your VM and install Ubuntu inside it.
-- Follow installation prompts, create a username/password.
+1. Open **VMware Workstation / Player**.
+2. Click **Create a New Virtual Machine**.
+3. Select **Typical (recommended)** and click **Next**.
+4. Choose **Installer disc image file (ISO)** and browse to your downloaded Ubuntu ISO.
+5. Click **Next**.
 
 ---
 
-## 4. Install Required Software
-Once Ubuntu is running, open a terminal and install:
+## 3. Configure the VM
+
+| Setting | Recommended Value |
+|---------|-----------------|
+| Guest OS | Linux → Ubuntu 64-bit |
+| Name | Ubuntu VM (any descriptive name) |
+| Memory (RAM) | 2048 MB (2 GB) or more |
+| Processors | 2 CPUs |
+| Hard Disk | 20 GB or more, pre-allocated or dynamically allocated |
+| CD/DVD (SATA) | Attach Ubuntu ISO, check **Connect at power on** |
+| Network Adapter | NAT (default) |
+
+---
+
+
+## 3. Boot from the ISO
+
+1. Start the VM.
+2. If it does not boot automatically from the ISO:
+   - Press **Esc**, **F2**, or **F12** at VM startup to access the boot menu.
+   - Select the **CD/DVD drive** to boot first.
+
+---
+## 4. Install Ubuntu
+
+1. When the Ubuntu menu appears, select **"Try Ubuntu"** or **"Install Ubuntu"**.
+2. Follow the installer wizard:
+   - Select language, keyboard layout, and time zone.
+   - Partition your virtual disk (default option is fine).
+   - Create a username and password.
+3. Complete the installation.
+
+---
+
+## 5. After Installation
+
+1. Remove the ISO from the virtual drive to boot from the virtual disk:
+   - VM Settings → CD/DVD (SATA) → Disconnect.
+2. Restart the VM; it should now boot directly into Ubuntu.
+
+---
+
+## ✅ Tips to Avoid Kernel/Boot Errors
+
+- Use the **desktop ISO** for VirtualBox/VMware, not the server ISO, unless required.
+- Ensure **at least 2 GB RAM**.
+- Verify the ISO checksum to ensure it’s not corrupted.
+- Enable virtualization extensions in your host BIOS/UEFI if available.
+
+---
+
+## 6. Install Required Software
+Once Ubuntu is running, open a terminal by pressing Ctrl + Alt + T and install:
+
+# Ubuntu VM Setup Guide for Hangman Club Project
+
+This guide walks you through setting up a development environment for the Hangman Club Project on an Ubuntu VM.
+
+---
+
+## 1. Open Terminal
+
+Press **Ctrl + Alt + T** to open the terminal.
+
+---
+
+## 2. Update System Packages
 
 ```bash
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y python3 python3-pip git
-```
+sudo apt update -y && sudo apt upgrade -y
 
-Optional but recommended:
+---
+
+3. Install Required System Software
+
+python3, python3-pip, python3-venv → Python and virtual environment support
+
+git → Version control
+
+curl → Needed for downloading GitHub CLI key
+
+build-essential → Development tools (gcc, make, etc.)
+
 ```bash
-sudo apt install -y curl build-essential
-```
+sudo apt install -y python3 python3-pip python3-venv git curl build-essential
 
 ---
 
-## 5. Install CI/CD Tools
-- **GitHub CLI** (for repo and issues):
-  ```bash
-  type -p curl >/dev/null || sudo apt install curl -y
-  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
-  sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
-  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-  sudo apt update
-  sudo apt install gh -y
-  ```
 
-- **Pytest** (for automated testing):
-  ```bash
-  pip install pytest
-  ```
+4. Install GitHub CLI (gh)
 
-- **Flake8** (for linting):
-  ```bash
-  pip install flake8
-  ```
+```bash
+# Ensure curl is installed
+type -p curl >/dev/null || sudo apt install -y curl
+
+# Download and register GitHub CLI GPG key
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+
+# Add GitHub CLI repository
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+
+# Update package lists and install
+sudo apt update -y
+sudo apt install -y gh
 
 ---
+
+5. Set Up Python Development Environment
+
+⚠️ All Python development tools are installed inside the virtual environment, avoiding conflicts with system Python.
+
+```bash
+
+# 1. Create a virtual environment
+python3 -m venv devenv
+
+# 2. Activate the virtual environment
+source devenv/bin/activate
+
+# 3. Upgrade pip inside the virtual environment
+pip install --upgrade pip
+
+# 4. Install Python development tools
+pip install pytest flake8 black isort
+
+# 5. Verify installations
+pytest --version
+flake8 --version
+black --version
+isort --version
+
+---
+
 
 ## 6. Clone the Project Repository
 ```bash
@@ -88,10 +180,23 @@ All should return version numbers.
 
 ---
 
+Notes
+
+To deactivate the virtual environment when done:
+```bash
+deactivate```
+
+To reactivate later:
+```bash
+source devenv/bin/activate```
+
+---
+
 ## 8. Next Steps
 - Configure CI/CD in `.github/workflows/`.
-- Test the pipeline by committing and pushing code.
+- Test the pipeline by using the CI_CD_Testing_Hangman_Project.md guide
 
 ---
 
 ✅ You are now ready to contribute to the Hangman Project with full CI/CD support!
+
