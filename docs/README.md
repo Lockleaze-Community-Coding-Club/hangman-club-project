@@ -6,7 +6,7 @@ This project will use a virtual development environment contained within a Virtu
 
 ## 📘 Development Environment Description:
 
-- [Development Environment Description](</docs/dev_env_git_actions_guide>)
+- [Development Environment Description](</docs/dev_env_git_actions_guide.md>)
 ---
 
 ## 🚀 What is Hangman?
@@ -39,28 +39,25 @@ Hangman is a word guessing game where the player tries to uncover a secret word 
    cd hangman-project
    ```
 
-2. **Create a virtual environment and test the CI/CD Pipeline** :
+2. **Create a virtual environment** :
 
    ## 📘 Documentation
 
-- [Virtual Machine Setup Guide (Markdown)](/docs/VM_SETUP.md) 
-- [CICD Pipeline Setup Test (Markdown)](/docs/CI_CD_Testing_Hangman_Club_Project.md)
+- [Virtual Machine Setup Guide](/docs/VM_SETUP.md) 
 
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # Windows: venv\Scripts\activate
 
-   Run the initial tests to confirm everything works
-   bash
-   pytest
-   '''
+3. **Test the CI/CD Pipeline** :
 
-3. **Install requirements** (if any):
+   ## 📘 Documentation
+
+- [CICD Pipeline Setup Test](/docs/CI_CD_Testing_Hangman_Club_Project.md)
+
+4. **Install requirements** (if any):
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Run the game**:
+5. **Run the game**:
    ```bash
    python src/main.py
    ```
