@@ -22,16 +22,51 @@ Make sure you have completed the setup from the previous guide:
 # Navigate to the project repository
 cd hangman-club-project
 
-# Make sure you are on the main branch
-git checkout main
+# Make sure you are on the master branch
+git checkout master
 
 # Pull the latest changes
-git pull origin main
+git pull origin master
 ```
 
 ---
+## 3. Start your Virtual Machine
 
-## 3. Run Tests Locally
+Start your VM and log into Ubunto
+Open a terminal in the VM (Ctrl + Alt + T)
+
+
+
+---
+## 4. Clone your global git repository into your VM
+
+On your laptop, push your local changes to GitHub:
+
+```bash
+
+cd /path/to/local/repo
+git add .
+git commit -m "Save Changes"
+git push origin master
+```
+
+On your VM, inside the terminal:
+
+```bash
+# Navigate to where you want the project folder
+cd ~
+# Clone it if first time
+git clone https://github.com/<your-username>/hangman-club-project.git
+# Or pull updates if already cloned
+cd hangman-club-project
+git pull origin main
+```
+After this, the VM sees the same files as your laptop
+Then you can activate your virtual environment in the VM (source devenv/bin/activate) and work inside it.
+
+---
+
+## 5. Run Tests Locally
 
 Before pushing changes, verify that tests pass locally:
 
@@ -48,7 +83,7 @@ pytest -v
 
 ---
 
-## 4. Make a Test Change (Optional)
+## 6. Make a Test Change (Optional)
 
 To test the pipeline, you can make a small change, e.g., update a README file:
 
@@ -61,7 +96,7 @@ nano README.md
 
 ---
 
-## 5. Stage and Commit the Change
+## 7. Stage and Commit the Change
 
 ```bash
 # Stage all changes
@@ -73,7 +108,7 @@ git commit -m "Test CI/CD pipeline"
 
 ---
 
-## 6. Push to GitHub
+## 8. Push to GitHub
 
 ```bash
 git push origin main
@@ -83,7 +118,7 @@ git push origin main
 
 ---
 
-## 7. Monitor the Pipeline on GitHub
+## 9. Monitor the Pipeline on GitHub
 
 1. Open your repository on GitHub:  
    `https://github.com/<your-username>/hangman-club-project`
@@ -100,7 +135,7 @@ git push origin main
 
 ---
 
-## 8. Troubleshoot Pipeline Failures
+## 10. Troubleshoot Pipeline Failures
 
 - Click on a failed job to see **detailed logs**.  
 - Common issues:
@@ -111,7 +146,7 @@ git push origin main
 
 ---
 
-## 9. Optional: Trigger Workflow Manually
+## 11. Optional: Trigger Workflow Manually
 
 If needed, you can trigger GitHub Actions manually:
 
@@ -123,7 +158,7 @@ gh workflow run <workflow_name.yml> -f ref=main
 
 ---
 
-## 10. Clean Up After Testing
+## 12. Clean Up After Testing
 
 - Deactivate virtual environment:
 

@@ -136,6 +136,14 @@ sudo apt install -y gh
 ⚠️ All Python development tools are installed inside the virtual environment, avoiding conflicts with system Python.
 
 ```bash
+# 0. Install the virtual environment software
+sudo apt update
+[sudo] password for your-name
+   # Enter your ubunto password. When you type the password, nothing will appear on the screen (not even asterisks). This is normal - just type it carefully and press enter.
+sudo apt install python3-venv -y
+   # Verify the installation
+python3 -m venv --help
+   # If it prints usage instructions instead of an error, python3-venv is installed correctly
 
 # 1. Create a virtual environment
 python3 -m venv devenv
