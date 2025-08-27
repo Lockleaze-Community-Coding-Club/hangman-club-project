@@ -4,9 +4,9 @@
 Welcome to the **Hangman** game project! This beginner-friendly Python game is designed for learning, collaboration, and fun.
 This project will use a virtual development environment contained within a Virtual Machine for local development which then shall be pushed into git hub, which in turn shall switch on github actions to create a CI/CD pipeline. See the below document for a description of this;
 
-## 📘 Documentation :
+## 📘 Development Environment Description:
 
-- [Development Environment Description)](</docs/dev_env_git_actions_guide>)
+- [Development Environment Description](</docs/dev_env_git_actions_guide>)
 ---
 
 ## 🚀 What is Hangman?
