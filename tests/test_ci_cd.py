@@ -8,3 +8,6 @@ def test_string():
 
 def test_boolean():
     assert True is not False
+    
+def test_subtraction():
+    assert 2 - 2 == 4
