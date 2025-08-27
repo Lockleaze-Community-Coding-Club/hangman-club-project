@@ -164,17 +164,30 @@ black --version
 isort --version
 
 ---
+## 6. Update GitHub from your laptop local repo
 
+On your laptop, push your local changes to GitHub:
 
-## 6. Clone the Project Repository
 ```bash
-git clone https://github.com/<your-username>/hangman-club-project.git
-cd hangman-club-project
+
+cd /path/to/local/repo
+git add .
+git commit -m "Save Changes"
+git push origin master
 ```
+---
+
+## 7. Set up Git in your Ubuntu VM with SSH Keys
+   ## 📘 Documentation :
+
+  - [Git Setup in Ubuntu VM with SSH Keys](</docs/git_ssh_vm_setup_guide>)
+
+After this, the VM sees the same files as your laptop
+Then you can activate your virtual environment in the VM (source devenv/bin/activate) and work inside it.
 
 ---
 
-## 7. Verify Installation
+## 8. Verify Installation
 Run:
 ```bash
 python3 --version
@@ -200,7 +213,7 @@ source devenv/bin/activate```
 
 ---
 
-## 8. Next Steps
+## 9. Next Steps
 - Configure CI/CD in `.github/workflows/`.
 - Test the pipeline by using the CI_CD_Testing_Hangman_Project.md guide
 
