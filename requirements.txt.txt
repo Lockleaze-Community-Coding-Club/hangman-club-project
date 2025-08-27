@@ -1,0 +1,12 @@
+# Core dependencies for Hangman Project
+
+# Testing
+pytest==8.4.1
+
+# Linting and formatting
+flake8==7.1.1
+black==24.8.0
+isort==5.13.2
+
+# (Optional) If your project uses requests or other libraries, add here
+# requests==2.32.3
