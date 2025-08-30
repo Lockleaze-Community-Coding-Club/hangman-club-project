@@ -9,4 +9,3 @@ def test_string():
 
 def test_boolean():
     assert True is not False
-
