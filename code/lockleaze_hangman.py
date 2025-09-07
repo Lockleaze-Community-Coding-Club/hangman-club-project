@@ -14,8 +14,8 @@ else:
 # python code/lockleaze_hangman.py
 
 # it will look like this
-# Rick@LAPTOP-IK2NAICQ MINGW64 
+# Rick@LAPTOP-IK2NAICQ MINGW64
 # /c/Lockleaze Hangman/hangman-club-project (master)
 # $ python code/lockleaze_hangman.py
-# empt string -- this needs to contain the word 
+# empt string -- this needs to contain the word
 # chosen and the masked version to display on the screen
