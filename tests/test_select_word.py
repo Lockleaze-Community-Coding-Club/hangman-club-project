@@ -23,4 +23,3 @@ def test_select_word_returns_strings():
 def test_word_same_length_as_template():
     word_selected = select_word()
     assert len(word_selected[0]) == len(word_selected[1])
-    
