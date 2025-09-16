@@ -57,7 +57,14 @@ Hangman is a word guessing game where the player tries to uncover a secret word 
    pip install -r requirements.txt
    ```
 
-5. **Run the game**:
+5. **Set up the ability to view code coverage (How well the code is tested)** :
+
+   ## 📘 Documentation
+
+- [Code Coverage Metric Set up guide](/docs/github_coverage_setup.md) 
+
+
+6. **Run the game**:
    ```bash
    python src/main.py
    ```
