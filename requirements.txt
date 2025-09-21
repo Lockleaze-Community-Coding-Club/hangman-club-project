@@ -2,6 +2,8 @@
 
 # Testing
 pytest==8.4.1
+pytest-xdist==3.6.1
+pytest-cov
 
 # Linting and formatting
 flake8==7.1.1

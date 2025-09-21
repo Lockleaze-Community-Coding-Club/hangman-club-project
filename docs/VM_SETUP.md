@@ -155,7 +155,8 @@ source devenv/bin/activate
 pip install --upgrade pip
 
 # 4. Install Python development tools
-pip install pytest flake8 black isort
+pip install pytest pytest-xdist flake8 black isort
+
 
 # 5. Verify installations
 pytest --version
