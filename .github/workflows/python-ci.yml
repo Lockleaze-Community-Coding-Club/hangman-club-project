@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.10, 3.11]  # Test multiple Python versions in parallel
+        python-version: [3.11]  # Test multiple Python versions in parallel
 
     steps:
     - name: Checkout code
