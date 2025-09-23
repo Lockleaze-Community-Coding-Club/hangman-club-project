@@ -1,6 +1,6 @@
 #This is a test to test the word_selection function
 import inspect
-import word_selection
+from word_selection.py import word_selection
 import pytest
 
 def test_format_string():
