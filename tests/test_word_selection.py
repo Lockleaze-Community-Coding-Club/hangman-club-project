@@ -6,7 +6,8 @@ import pytest
 def test_format_string():
     """Check that the actual return value is a string at runtime."""
     result = word_selection("green")
-    assert isinstance(result, str), "Expected word_selection() to return a string"
+    assert isinstance(result, str)
+    """Expected word_selection() to return a string"""
 
 
 def test_return_annotation_is_str():
