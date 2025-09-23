@@ -12,7 +12,8 @@ def test_format_string():
 def test_return_annotation_is_str():
     """Check that the function is annotated to return a string."""
     sig = inspect.signature(word_selection)
-    assert sig.return_annotation is str, "Expected word_selection() return type annotation to be str"
+    assert sig.return_annotation is str, 
+    "Expected word_selection() return type annotation to be str"
 
 def test_length():
      """Check that the function will return a certain length."""
