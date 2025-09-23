@@ -1,7 +1,13 @@
 #This is a test to test the word_selection function
-import inspect
-from word_selection.py import word_selection
-import pytest
+import sys
+import os
+
+sys.path.append(
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "../code"))
+)
+
+from word_selection import word_selection
+
 
 def test_format_string():
     """Check that the actual return value is a string at runtime."""
