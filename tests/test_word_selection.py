@@ -3,14 +3,16 @@ import sys
 import os
 
 sys.path.append(
-    os.path.abspath(os.path.join(os.path.dirname(__file__), "../code"))
+    os.path.abspath(os.path.join(os.path.dirname(__file__), \
+                             "../code"))
 )
 
 from word_selection import word_selection
 
 
 def test_format_string():
-    """Check that the actual return value is a string at runtime."""
+    """Check that the actual return \
+        value is a string at runtime."""
     result = word_selection("green")
     assert isinstance(result, str)
     """Expected word_selection() to return a string"""
@@ -18,7 +20,8 @@ def test_format_string():
 
 def test_return_annotation_is_str():
     """Check that the function is annotated to return a string."""
-    assert type (word_selection('hello')) == type('example of a string')
+    assert type (word_selection('hello')) == \
+        type('example of a string')
     """Expected word_selection() return type annotation to be str"""
 
 def test_length():
@@ -28,5 +31,7 @@ def test_length():
 
 def test_no_space():
     from re import fullmatch
-    """Check that there is only one word supplied and there are no spaces"""
-    assert fullmatch(r"[A-Za-z]+", word_selection('hello')), f"String contains non-letter characters: {s}"
+    """Check that there is only one word supplied \
+        and there are no spaces"""
+    assert fullmatch(r"[A-Za-z]+", word_selection('hello')), \
+          f"String contains non-letter characters: "
