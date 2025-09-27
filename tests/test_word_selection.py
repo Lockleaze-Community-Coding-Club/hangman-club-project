@@ -1,6 +1,4 @@
 #This is a test to test the word_selection function
-import sys
-import os
 from re import fullmatch
 from word_selection import word_selection
 
