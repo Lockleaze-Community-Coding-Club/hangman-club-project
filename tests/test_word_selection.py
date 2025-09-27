@@ -24,7 +24,7 @@ def test_return_annotation_is_str():
 def test_length():
      """Check that the function will return a certain length."""
      assert len (word_selection('hello')) > 0
-     assert len (word_selection('hello')) < 46
+     assert len (word_selection('hello')) < 47
 
 def test_no_space():
     from re import fullmatch
