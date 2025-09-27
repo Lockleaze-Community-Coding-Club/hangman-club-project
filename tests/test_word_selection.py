@@ -2,13 +2,6 @@
 import sys
 import os
 from re import fullmatch
-
-sys.path.append(
-    os.path.abspath \
-        (os.path.join(os.path.dirname(__file__), \
-                             "../code"))
-)
-
 from word_selection import word_selection
 
 def test_format_string():
