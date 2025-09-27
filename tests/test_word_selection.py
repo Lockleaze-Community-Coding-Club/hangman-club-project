@@ -1,6 +1,6 @@
 #This is a test to test the word_selection function
 from re import fullmatch
-from word_selection import word_selection
+from code.word_selection import word_selection
 
 def test_format_string():
     """Check that the actual return \
