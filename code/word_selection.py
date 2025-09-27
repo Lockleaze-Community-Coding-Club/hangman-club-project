@@ -3,4 +3,4 @@ def word_selection(word: str) -> str:
     return the_word
 
 
-print("this is the word : ", word_selection())
+print("this is the word : ", word_selection('What'))
