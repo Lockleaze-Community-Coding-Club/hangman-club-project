@@ -16,39 +16,47 @@ Make sure you have completed the setup from the previous guide:
 
 ---
 
-## 2. Check Out the Correct Branch
+---
+## 2. Start your Virtual Machine
+
+Start your VM and log into Ubunto
+Open a terminal in the VM (Ctrl + Alt + T)
+---
+
+## 3. Check Out the Correct Branch
 
 ```bash
 # Navigate to the project repository
 cd hangman-club-project
 
-# Make sure you are on the master branch
-git checkout master
+# Make sure you are on the dev branch
+git checkout dev
 
 # Pull the latest changes
-git pull origin master
+git pull origin dev
 ```
+---
+## 4. Activate the Virtual Environment
+```bash
+source devenv/bin/activate
+```
+---
+## 5. Install or Update Dependencies
+```bash
+pip install -r requirements.txt
+```
+- Do this **inside the activated venv** to ensure dependencies are isolated.
 
 ---
-## 3. Start your Virtual Machine
 
-Start your VM and log into Ubunto
-Open a terminal in the VM (Ctrl + Alt + T)
+## 6. Run Tests Locally
 
-
-
----
-
-## 4. Run Tests Locally
-
-Before pushing changes, verify that tests pass locally:
+Verify that tests pass locally:
 
 ```bash
-# Ensure virtual environment is active
-source ../devenv/bin/activate   # adjust path if needed
-
 # Run all pytest tests
 pytest -v
+
 ```
 
 - `-v` = verbose output  
@@ -56,9 +64,9 @@ pytest -v
 
 ---
 
-## 5. Make a Test Change (Optional)
+## 7. Make a Test Change (Optional)
 
-To test the pipeline, you can make a small change, e.g., update a README file:
+To test the pipeline, you can make a small change, e.g., update the README file:
 
 ```bash
 # Edit the README
@@ -84,7 +92,7 @@ git commit -m "Test CI/CD pipeline"
 ## 7. Push to GitHub
 
 ```bash
-git push origin main
+git push origin dev
 ```
 
 - Pushing triggers the **GitHub Actions workflow** automatically if it is set up in `.github/workflows/`.
@@ -126,7 +134,7 @@ If needed, you can trigger GitHub Actions manually:
 ```bash
 # Using GitHub CLI
 gh workflow list
-gh workflow run <workflow_name.yml> -f ref=main
+gh workflow run <workflow_name.yml> -f ref=dev
 ```
 
 ---
@@ -143,7 +151,7 @@ deactivate
 
 ```bash
 git reset --hard HEAD~1
-git push origin main --force
+git push origin dev --force
 ```
 
 ---

@@ -55,22 +55,18 @@ Hangman is a word guessing game where the player tries to uncover a secret word 
 
 - [CICD Pipeline Setup Test](/docs/CI_CD_Testing_Hangman_Club_Project.md)
 
-4. **Install requirements** (if any):
-   ```bash
-   pip install -r requirements.txt
-   ```
 
-5. **Set up the ability to view code coverage (How well the code is tested)** :
+4. **Set up the ability to view code coverage (How well the code is tested)** :
 
    ## 📘 Documentation
 
 - [Code Coverage Metric Set up guide](/docs/github_coverage_setup.md) 
 
 
-6. **Run the game**:
-   ```bash
-   python src/main.py
-   ```
+5. **Do some coding and project work**:
+      ## 📘 Documentation
+
+- [How to code on the project and test the pipeline in your Virtual Environment prior to commiting](/docs/full_vm_git_venv_workflow.md)
 
 ---
 
