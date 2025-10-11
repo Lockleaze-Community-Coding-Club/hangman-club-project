@@ -28,9 +28,6 @@ def test_length():
      assert len (word_selection('hello')) < 47
 
 def test_no_space():
-    
-    """Check that there is only one word supplied \
-        and there are no spaces"""
-    assert fullmatch("[A-Za-z]+", \
-                     word_selection('hello')), \
-          "String contains non-letter characters: "
+    """Check that there is only one word supplied and there are no spaces"""
+    result = word_selection('hello')
+    assert fullmatch(r"[A-Za-z]+", result), f"Invalid string: {result}"
