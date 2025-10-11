@@ -2,6 +2,19 @@
 from re import fullmatch
 from hangman_code.word_selection import word_selection
 
+def test_input_error():
+    """Check that an error is raised if words.txt does not exist."""
+    with pytest.raises(FileNotFoundError):
+        word_selection.parse_words("notfound.txt")
+    #Issue 28
+
+def test_parse_words():
+    """Check that the words.txt file is parsed as a list of words."""
+    result = word_selection.parse_words("test_words.txt")
+    expected = ["animal", "banana", "carrot"]
+    assert result == expected, f"Expected {expected}, but got {result}"
+    # Issue 28
+
 def test_format_string():
     """Check that the actual return \
         value is a string at runtime."""
