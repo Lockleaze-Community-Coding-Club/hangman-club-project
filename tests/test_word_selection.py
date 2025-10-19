@@ -20,7 +20,7 @@ def test_choose_word():
     """Check that a single word is chosen from the list"""
     fake_list = ["red","yellow","pink","green"]
     result = word_selection.choose_word(fake_list)
-    assert result in fake_list, f"Expected one of {fake_list}, but got {result}"
+    assert result in fake_list, f"Expected one of {fake_list} but got {result}"
     #Issue 29
 
 def test_choose_word2():
@@ -33,7 +33,8 @@ def test_choose_word2():
 def test_word_selection_randomness():
     results = {word_selection() for _ in range(100)}
     # Expect that more than one unique word was selected
-    assert len(results) > 1, f"Word selection not random enough: {results}"
+    msg = f"Word selection not random enough: {results}"
+    assert len(results) > 1, msg
     #Issue 29
 
 
