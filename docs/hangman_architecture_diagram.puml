@@ -1,0 +1,35 @@
+
+@startuml
+' PlantUML C4-style diagram for Hangman Web App.
+' This file uses simple container/component boxes and is intended to be editable.
+' Tips: Install PlantUML plugin in VS Code and Graphviz to render locally.
+
+' Define skin params for readability
+skinparam backgroundColor #FFFFFF
+skinparam componentStyle rectangle
+
+' --------- System Context ---------
+' Player (browser) interacts with the Flask web app over HTTP
+rectangle "Player (Web Browser)\n- User interacts via forms and pages" as Browser #LightBlue
+
+' --------- Containers ---------
+rectangle "Flask Web Application\n(app.py / routes.py)\n- Routing, templating, session" as Flask #LightGreen
+' The Game Logic is a separate Python package to keep business logic testable
+rectangle "Game Logic (hangman/)\n(game.py, words.py, utils.py)\n- Pure Python, unit-testable" as Logic #LightYellow
+rectangle "Persistence\n(SQLite or JSON file)\n- Word lists, optional scores" as Persistence #LightCoral
+rectangle "CI/CD & Tests\n(GitHub Actions, pytest, flake8, coverage)" as CI #LightGray
+
+' --------- Relationships (data/control flow) ---------
+Browser -down-> Flask : "HTTP (GET/POST) - play, guess, new game"
+Flask -down-> Logic : "Calls Game API: start_game(), make_guess(), status()"
+Logic -down-> Persistence : "Load/save word lists or scores (optional)"
+Flask -down-> CI : "Triggered via commits/PRs - runs tests and linters (separate system)"
+Flask -down-> CI : "Uploads coverage results (optional)"
+
+' --------- Notes / Inline guidance ---------
+' The Logic container should be pure functions/classes with no Flask imports - this makes it easy to test with pytest.
+' Keep templates in a separate folder (templates/) and static assets in static/.
+' For integration tests, use Flask's test_client to simulate browser requests.
+' Use sessions for per-player game state or persist in DB for longer sessions.
+
+@enduml
