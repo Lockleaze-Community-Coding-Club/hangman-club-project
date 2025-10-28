@@ -22,7 +22,7 @@ Hangman is a word guessing game where the player tries to uncover a secret word 
 
    ## 📘 Documentation :
 
-- [Hangman Architecture and Test Plan (Markdown)](</docs/Hangman Architecture and Test Plan.pptx>)
+- [Hangman Architecture and Test Plan (Markdown)](</docs/architecture_with_functions.md>)
 
 - Command-line interface (CLI)
 - ASCII art visualizations
