@@ -1,0 +1,57 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+' C4-Level 3: Flask Web Application with external Persistence (JSON file)
+' Inline comments explain components and relationships.
+
+LAYOUT_LEFT_RIGHT()
+
+Person(user, "Player", "User playing Hangman in their browser")
+
+' Containers (C2)
+System_Boundary(flask_app, "Flask Web Application") {
+    ' app.py: application factory and config - registers routes/blueprints
+    Component(app_py, "app.py", "Application Configuration", "Creates Flask app, sets configuration and registers routes")
+    ' routes.py: controllers handling HTTP requests, session interaction, templates
+    Component(routes_py, "routes.py", "Routing / Controller", "Defines HTTP endpoints: index, guess, new_game, admin; orchestrates Game and Persistence calls")
+    ' game.py: pure business logic, easily unit-testable
+    Component(game_py, "hangman/game.py", "Game Logic", "Implements Hangman rules and state management (start_game, make_guess, is_won, is_lost)")
+    ' word_selection.py: manage word lists
+    Component(word_py, "hangman/word_selection.py", "Word Selection", "Loads, sanitises and filters words; provides get_random_word()")
+    ' templates and static are components handling presentation
+    Component(templates, "templates/", "UI Templates", "Jinja2 templates (index.html, game.html) used to render pages")
+    Component(static, "static/", "Static Assets", "CSS, JS and images used by the UI")
+    ' tests component represents test code within the Flask container
+    Component(tests, "tests/", "Automated Tests", "Pytest unit and integration tests (test_game.py, test_routes.py)")
+}
+
+' External Persistence Container (C2) - JSON file based storage
+Container(persistence, "Persistence Store (JSON file)", "File storage", "Durable storage for word lists, saved games and scores (data/*.json)") {
+    ' This container is external to Flask process and is accessed via persistence helper module
+}
+
+' Relationships
+Rel(user, routes_py, "Uses (HTTP) - plays game, submits guesses", "HTTP/HTTPS")
+Rel(routes_py, game_py, "Calls for game operations (start_game, make_guess, status)", "Function calls / in-process")
+Rel(routes_py, word_py, "Requests random/filtered words from", "Function calls")
+Rel(routes_py, templates, "Renders HTML pages with", "Jinja2")
+Rel(templates, static, "References assets from", "HTTP / static files")
+Rel(routes_py, persistence, "Reads and writes game state / scores from/to", "File I/O (JSON)")
+Rel(game_py, tests, "Covered by unit tests in", "pytest")
+Rel(routes_py, tests, "Covered by integration tests via Flask test_client", "pytest")
+Rel(app_py, routes_py, "Initialises and registers routes for handling HTTP requests")
+Rel(app_py, templates, "Renders HTML pages via Jinja2 templates")
+Rel(app_py, static, "Serves static assets (CSS, JS)")
+Rel(routes_py, game_py, "Calls game logic for user actions (start_game, make_guess, etc.)")
+Rel(game_py, word_py, "Retrieves and filters word list")
+Rel(game_py, persistence, "Saves and loads game state to/from JSON file")
+Rel(routes_py, persistence, "Reads/writes persistent data when needed")
+Rel(tests, app_py, "Uses Flask test client to verify routes and game behaviour")
+
+
+' Notes:
+' - The Persistence Store is modelled as a separate container (file-based JSON) to emphasise durability and independence.
+' - The hangman/game.py module should remain free of Flask imports so it can be unit-tested in isolation.
+' - The routes orchestrate interactions between Game, Persistence, and Templates.
+@enduml
