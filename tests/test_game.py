@@ -7,7 +7,8 @@ def test_make_guess():
         the same letter guess cannot be repeated"""
         test_letter = ["E", "z", "e", 1, 10000,"!", "aa", "Be", "E"]
         test_result =[]
-        expected = ["E","Z", "E", ValueError, ValueError, ValueError, ValueError, ValueError, ValueError]
+        expected = ["E","Z", "E", ValueError, ValueError, ValueError, 
+                    ValueError, ValueError, ValueError]
         for x in test_letter:
             result = Game.make_guess(x)
             test_result.append(result)
@@ -17,7 +18,8 @@ def test_make_guess():
 def test_display_word():
         """Test to check that the word and the blanks are 
         correctly outputted for display to the player"""
-        test_words = ["apple", "ra__i_", "Lockleaze_is_great", "I like wine", "Oopsie123", "1__A__3"]
+        test_words = ["apple", "ra__i_", "Lockleaze_is_great", 
+                      "I like wine", "Oopsie123", "1__A__3"]
         test_result = []
         expected = ["APPLE", "RA__I_", ValueError, ValueError, ValueError, ValueError]
         for x in test_words:
@@ -40,7 +42,8 @@ def test_to_dict_basic_structure():
     data = game.to_dict()
 
     # Ensure correct keys
-    assert set(data.keys()) == {"word", "guessed_letters", "attempts_left", "wrong_guesses"}
+    assert set(data.keys()) == {"word", "guessed_letters", 
+                                "attempts_left", "wrong_guesses"}
 
 def test_to_dict_values_are_correct():
     game = Game(word="community", guessed_letters={"p", "x"}, attempts_left=5)
@@ -142,7 +145,8 @@ def test_from_dict_rejects_empty_word():
         Game.from_dict(data)
 
 def test_from_dict_invalid_guessed_letters():
-    """Check that an error is raised if invalid values are entered"""
+    """Check that an error is raised if invalid values 
+    are entered"""
     data = {
         "word": "python",
         "guessed_letters": [1, 2, 3],  # invalid types
@@ -154,7 +158,8 @@ def test_from_dict_invalid_guessed_letters():
         Game.from_dict(data)
 
 def test_from_dict_negative_attempts_rejected():
-    """Check that the number of remaining attempts cannot be negative"""
+    """Check that the number of remaining attempts 
+    cannot be negative"""
     data = {
         "word": "python",
         "guessed_letters": [],
