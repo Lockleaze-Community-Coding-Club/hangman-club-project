@@ -13,7 +13,9 @@ def test_make_guess():
         for x in test_letter:
             result = Game.make_guess(x)
             test_result.append(result)
-        assert result == expected, f"Expected {expected}, but got {result}"
+        msg = f"Expected {expected}, but got {result}"
+        assert result == expected, msg
+
 
 
 def test_display_word():
@@ -27,7 +29,9 @@ def test_display_word():
         for x in test_words:
             result = Game.display_word(x)
             test_result.append(result)
-        assert result == expected, f"Expected {expected}, but got {result}"
+        msg = f"Expected {expected}, but got {result}"
+        assert result == expected, msg
+
 
 def test_remaining_attempts():
         test_attempts = [11,10,1,0,-1]
@@ -165,7 +169,7 @@ def test_from_dict_invalid_guessed_letters():
         Game.from_dict(data)
 
 def test_from_dict_negative_attempts_rejected():
-    """Check that the number of remaining attempts 
+    """Check that the number of remaining attempts
     cannot be negative"""
     data = {
         "word": "python",
