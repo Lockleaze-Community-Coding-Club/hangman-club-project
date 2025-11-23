@@ -13,8 +13,12 @@ def test_make_guess():
         for x in test_letter:
             result = Game.make_guess(x)
             test_result.append(result)
-        msg = f"Expected {expected}, but got {result}"
+        msg = (
+            f"Expected {expected}, "
+            f"but got {result}"
+        )
         assert result == expected, msg
+
 
 
 
@@ -29,7 +33,10 @@ def test_display_word():
         for x in test_words:
             result = Game.display_word(x)
             test_result.append(result)
-        msg = f"Expected {expected}, but got {result}"
+        msg = (
+            f"Expected {expected}, "
+            f"but got {result}"
+        )
         assert result == expected, msg
 
 
@@ -40,7 +47,10 @@ def test_remaining_attempts():
         for x in test_attempts:
             result = Game.remaining_attempts(x)
             test_result.append(result)
-        msg = f"Expected {expected}, but got {result}"
+        msg = (
+            f"Expected {expected}, "
+            f"but got {result}"
+        )
         assert result == expected, msg
 
 
@@ -177,7 +187,6 @@ def test_from_dict_negative_attempts_rejected():
         "attempts_left": -1,
         "wrong_guesses": []
     }
-
     with pytest.raises(ValueError):
         Game.from_dict(data)
 
