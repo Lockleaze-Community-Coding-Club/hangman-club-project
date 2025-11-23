@@ -36,7 +36,9 @@ def test_remaining_attempts():
         for x in test_attempts:
             result = Game.remaining_attempts(x)
             test_result.append(result)
-        assert result == expected, f"Expected {expected}, but got {result}"
+        msg = f"Expected {expected}, but got {result}"
+        assert result == expected, msg
+
 
 
 def test_to_dict_basic_structure():
