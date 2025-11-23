@@ -3,7 +3,8 @@ import pytest
 from hangman_code.game import Game
 
 def test_make_guess():
-        """Test to check that the user has inputted a letter correctly and that
+        """Test to check that the user has inputted a letter 
+        correctly and that
         the same letter guess cannot be repeated"""
         test_letter = ["E", "z", "e", 1, 10000,"!", "aa", "Be", "E"]
         test_result =[]
@@ -21,7 +22,8 @@ def test_display_word():
         test_words = ["apple", "ra__i_", "Lockleaze_is_great", 
                       "I like wine", "Oopsie123", "1__A__3"]
         test_result = []
-        expected = ["APPLE", "RA__I_", ValueError, ValueError, ValueError, ValueError]
+        expected = ["APPLE", "RA__I_", ValueError, 
+                    ValueError, ValueError, ValueError]
         for x in test_words:
             result = Game.display_word(x)
             test_result.append(result)
@@ -46,11 +48,13 @@ def test_to_dict_basic_structure():
                                 "attempts_left", "wrong_guesses"}
 
 def test_to_dict_values_are_correct():
-    game = Game(word="community", guessed_letters={"p", "x"}, attempts_left=5)
+    game = Game(word="community", guessed_letters={"p", "x"}, 
+                attempts_left=5)
     data = game.to_dict()
 
     assert data["word"] == "community"
-    assert set(data["guessed_letters"]) == {"p", "x"}  # converted from set → list
+    assert set(data["guessed_letters"]) == {"p", "x"}  
+    # converted from set → list
     assert data["attempts_left"] == 5
 
 def test_to_dict_returns_json_safe_types():
