@@ -40,7 +40,7 @@ def test_remaining_attempts():
 
 
 def test_to_dict_basic_structure():
-    game = Game(word="lockleaze")
+    game = Game(word = "lockleaze")
     data = game.to_dict()
 
     # Ensure correct keys

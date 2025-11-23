@@ -7,7 +7,7 @@
 "Uses for game operations (start, guess, win/loss)"
 
 
-class Game(max_attempts=6):
+class Game("word"):
 
     def _init_(self):
         #this is the constructor
