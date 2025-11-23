@@ -17,8 +17,8 @@ class Word_selection():
     def choose_word():
         return None
     
-    ##def load_words():
-        ##return "none"
+    #def load_words():
+        #return "none"
     
     def sanitize_word(word):
         return None

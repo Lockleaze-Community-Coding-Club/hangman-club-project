@@ -15,7 +15,8 @@ def test_make_guess():
 
 
 def test_display_word():
-        """Test to check that the word and the blanks are correctly outputted for display to the player"""
+        """Test to check that the word and the blanks are 
+        correctly outputted for display to the player"""
         test_words = ["apple", "ra__i_", "Lockleaze_is_great", "I like wine", "Oopsie123", "1__A__3"]
         test_result = []
         expected = ["APPLE", "RA__I_", ValueError, ValueError, ValueError, ValueError]
@@ -104,13 +105,15 @@ def test_from_dict_values_are_correct():
 
 def test_from_dict_missing_keys_raises_error():
     """Do a test to check for missing keys"""
-    data = {"word": "python"}  # missing guessed_letters, attempts_left, wrong_guesses
+    data = {"word": "python"}  
+    # missing guessed_letters, attempts_left, wrong_guesses
 
     with pytest.raises(KeyError):
         Game.from_dict(data)
 
 def test_from_dict_wrong_types_raise_error():
-    """Do a check that the data is in the right format and raises an error if not"""
+    """Do a check that the data is in the right 
+    format and raises an error if not"""
     data = {
         "word": 123,                         # should be str
         "guessed_letters": "not a list",     # should be list
