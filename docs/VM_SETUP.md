@@ -13,7 +13,7 @@ Download and install one on your host computer.
 
 ---
 
-  ## 2. Create a New VM
+## 2. Create a New VM
 - Download Ubuntu ISO (https://ubuntu.com/download/desktop).
 1. Open **VMware Workstation / Player**.
 2. Click **Create a New Virtual Machine**.
@@ -38,7 +38,7 @@ Download and install one on your host computer.
 ---
 
 
-## 3. Boot from the ISO
+## 4. Boot from the ISO
 
 1. Start the VM.
 2. If it does not boot automatically from the ISO:
@@ -46,7 +46,7 @@ Download and install one on your host computer.
    - Select the **CD/DVD drive** to boot first.
 
 ---
-## 4. Install Ubuntu
+## 5. Install Ubuntu
 
 1. When the Ubuntu menu appears, select **"Try Ubuntu"** or **"Install Ubuntu"**.
 2. Follow the installer wizard:
@@ -57,7 +57,7 @@ Download and install one on your host computer.
 
 ---
 
-## 5. After Installation
+## 6. After Installation
 
 1. Remove the ISO from the virtual drive to boot from the virtual disk:
    - VM Settings → CD/DVD (SATA) → Disconnect.
@@ -74,29 +74,20 @@ Download and install one on your host computer.
 
 ---
 
-## 6. Install Required Software
-Once Ubuntu is running, open a terminal by pressing Ctrl + Alt + T and install:
-
-# Ubuntu VM Setup Guide for Hangman Club Project
-
-This guide walks you through setting up a development environment for the Hangman Club Project on an Ubuntu VM.
-
----
-
-## 1. Open Terminal
+## 7. Open Terminal
 
 Press **Ctrl + Alt + T** to open the terminal.
 
 ---
 
-## 2. Update System Packages
+## 8. Update System Packages
 
 ```bash
 sudo apt update -y && sudo apt upgrade -y
-
+```
 ---
 
-3. Install Required System Software
+## 9. Install Required System Software
 
 python3, python3-pip, python3-venv → Python and virtual environment support
 
@@ -108,11 +99,10 @@ build-essential → Development tools (gcc, make, etc.)
 
 ```bash
 sudo apt install -y python3 python3-pip python3-venv git curl build-essential
-
+```
 ---
 
-
-4. Install GitHub CLI (gh)
+## 10. Install GitHub CLI (gh)
 
 ```bash
 # Ensure curl is installed
@@ -128,10 +118,10 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githu
 # Update package lists and install
 sudo apt update -y
 sudo apt install -y gh
-
+```
 ---
 
-5. Set Up Python Development Environment
+## 11. Set Up Python Virtual Development Environment
 
 ⚠️ All Python development tools are installed inside the virtual environment, avoiding conflicts with system Python.
 
@@ -153,72 +143,29 @@ source devenv/bin/activate
 
 # 3. Upgrade pip inside the virtual environment
 pip install --upgrade pip
-
-# 4. Install Python development tools
-pip install pytest pytest-xdist flake8 black isort
-
-
-# 5. Verify installations
-pytest --version
-flake8 --version
-black --version
-isort --version
-
----
-## 6. Update GitHub from your laptop local repo
-
-On your laptop, push your local changes to GitHub:
-
-```bash
-
-cd /path/to/local/repo
-git add .
-git commit -m "Save Changes"
-git push origin master
 ```
 ---
 
-## 7. Set up Git in your Ubuntu VM with SSH Keys
+## 12. Set up Git in your Ubuntu VM with SSH Keys
    ## 📘 Documentation :
 
-  - [Git Setup in Ubuntu VM with SSH Keys](</docs/git_ssh_vm_setup_guide>)
-
-After this, the VM sees the same files as your laptop
-Then you can activate your virtual environment in the VM (source devenv/bin/activate) and work inside it.
+  - [Git Setup in Ubuntu VM with SSH Keys](/docs/git_ssh_vm_setup_guide.md)
 
 ---
 
-## 8. Verify Installation
-Run:
-```bash
-python3 --version
-pip --version
-git --version
-pytest --version
-gh --version
-```
+## 13. Set up the ability to use VS Code on your laptop with your VM (Via a SSH to your Virtual Machine)
+      ## 📘 Documentation :
 
-All should return version numbers.
-
+  - [VS Code SSH Setup Guide](/docs/vscode_remote_ssh_vm.md)
 ---
 
-Notes
+## Notes
 
 To deactivate the virtual environment when done:
 ```bash
 deactivate```
-
+```
 To reactivate later:
 ```bash
 source devenv/bin/activate```
-
----
-
-## 9. Next Steps
-- Configure CI/CD in `.github/workflows/`.
-- Test the pipeline by using the CI_CD_Testing_Hangman_Project.md guide
-
----
-
-✅ You are now ready to contribute to the Hangman Project with full CI/CD support!
-
+```
