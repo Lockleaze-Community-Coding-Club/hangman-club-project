@@ -64,7 +64,8 @@ def test_to_dict_returns_json_safe_types():
     # Word must be a string
     assert isinstance(data["word"], str)
 
-    # guessed_letters must be a list (because JSON can't store sets)
+    # guessed_letters must be a list 
+    # (because JSON can't store sets)
     assert isinstance(data["guessed_letters"], list)
 
     # attempts_left must be an int
