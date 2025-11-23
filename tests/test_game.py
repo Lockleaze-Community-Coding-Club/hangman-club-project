@@ -1,5 +1,5 @@
 import pytest
-from re import fullmatch
+#from re import fullmatch
 from hangman_code.game import Game
 
 def test_make_guess():
