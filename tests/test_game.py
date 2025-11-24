@@ -137,7 +137,7 @@ def test_from_dict_missing_keys_raises_error():
                 Game.from_dict(data)
 
 def test_from_dict_wrong_types_raise_error():
-        """Do a check that the data is in the right 
+        """Do a check that the data is in the right
         format and raises an error if not"""
         data = {
                 "word": 123,                         # should be str
