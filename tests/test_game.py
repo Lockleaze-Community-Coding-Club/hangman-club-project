@@ -28,8 +28,12 @@ def test_display_word():
         test_words = ["apple", "ra__i_", "Lockleaze_is_great", 
                       "I like wine", "Oopsie123", "1__A__3"]
         test_result = []
-        expected = ["APPLE", "RA__I_", ValueError, 
-                    ValueError, ValueError, ValueError]
+        expected = ["APPLE",
+                    "RA__I_", 
+                    ValueError, 
+                    ValueError, 
+                    ValueError, 
+                    ValueError]
         for x in test_words:
             result = Game.display_word(x)
             test_result.append(result)
@@ -60,8 +64,10 @@ def test_to_dict_basic_structure():
     data = game.to_dict()
 
     # Ensure correct keys
-    assert set(data.keys()) == {"word", "guessed_letters", 
-                                "attempts_left", "wrong_guesses"}
+    assert set(data.keys()) == {"word", 
+                                "guessed_letters",
+                                "attempts_left", 
+                                "wrong_guesses"}
 
 def test_to_dict_values_are_correct():
     game = Game(word="community", guessed_letters={"p", "x"}, 
