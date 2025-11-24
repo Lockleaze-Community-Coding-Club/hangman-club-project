@@ -19,9 +19,6 @@ def test_make_guess():
         )
         assert result == expected, msg
 
-
-
-
 def test_display_word():
         """Test to check that the word and the blanks are 
         correctly outputted for display to the player"""
@@ -42,7 +39,6 @@ def test_display_word():
             f"but got {result}"
         )
         assert result == expected, msg
-
 
 def test_remaining_attempts():
         test_attempts = [11,10,1,0,-1]
