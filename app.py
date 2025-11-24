@@ -3,6 +3,7 @@
 "Relationship from routes_py - recieves feedback for the user and displays it"
 
 from flask import Flask, redirect, url_for, request, render_template
+import hangman_code.main
 
 app = Flask(__name__)
 
@@ -14,18 +15,24 @@ def home():
 def success(name):
     return f'welcome {name}'
 
+@app.route('/C')
+def C():
+    hangman_code.main.guess('C')
+    return 'some text'
+
 @app.route('/A')
 def A():
+    hangman_code.main.guess('A')
     return 'some text'
+
+
 
 @app.route('/alphabet', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
         user = request.form['nm']
-        return redirect(url_for('A', name='Z'))
-    elif request.method == 'A':
-        user = request.args.get('nm')
-        return redirect(url_for('A', letter='X'))
+        return redirect(url_for('C', name='Z'))
+
 
 
 

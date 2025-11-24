@@ -7,7 +7,7 @@
 "Uses for game operations (start, guess, win/loss)"
 
 
-class Game("word"):
+class Game():
 
     def _init_(self):
         #this is the constructor

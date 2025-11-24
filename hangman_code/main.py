@@ -36,24 +36,26 @@ def resume_game ():
 
 attempts_remaining = 10
 
-while attempts_remaining > 0:
+#while attempts_remaining > 0:
     
-    def play_game():
-            # user makes a guess
-        def guess ():
-            # guess calling on make_guess from game, get_render from 
-            # templates and then send_request from convertor
-            return None
-                # calculate result
-            # Work out if game is won using Game.is_itwon
-                # If not store information using Game.to_dict:
-                    # Store used letters (to_dict)
-                    # Store used word guesses (to_dict)
-                    # Store games status e.g. mid-game 
-                    # reduce number of attempts remaining
-                    # Render and display to the user
-                # If so :
-                    # Break and go to is_won in main
+def play_game():
+    return None
+        # user makes a guess
+def guess (letter):
+    # guess calling on make_guess from game, get_render from 
+    # templates and then send_request from convertor
+    print (letter)
+    return None
+        # calculate result
+    # Work out if game is won using Game.is_itwon
+        # If not store information using Game.to_dict:
+            # Store used letters (to_dict)
+            # Store used word guesses (to_dict)
+            # Store games status e.g. mid-game 
+            # reduce number of attempts remaining
+            # Render and display to the user
+        # If so :
+            # Break and go to is_won in main
                             
 def is_won():
     # store game status / history (to dict)
