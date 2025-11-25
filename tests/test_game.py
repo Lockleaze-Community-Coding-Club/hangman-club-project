@@ -45,13 +45,10 @@ def test_remaining_attempts():
         test_result = []
         expected = [10,9,0,-1,-2]
         for x in test_attempts:
-            result = Game.remaining_attempts(x)
-            test_result.append(result)
-        msg = (
-        f"Expected {expected},\n"
-        f"but got {result}"
-        )
-
+                result = Game.remaining_attempts(x)
+                test_result.append(result)
+        msg = (f"Expected {expected}/n"
+               f"but got {result}")
         assert result == expected, msg
 
 def test_to_dict_basic_structure():
@@ -59,10 +56,11 @@ def test_to_dict_basic_structure():
         data = game.to_dict()
 
         # Ensure correct keys
-        assert set(data.keys()) == {"word", 
-                                        "guessed_letters",
-                                        "attempts_left", 
-                                        "wrong_guesses"}
+        assert set(data.keys()) == {
+                "word", 
+                "guessed_letters",
+                "attempts_left", 
+                "wrong_guesses"}
 
 def test_to_dict_values_are_correct():
         game = Game(word="community", guessed_letters={"p", "x"}, 

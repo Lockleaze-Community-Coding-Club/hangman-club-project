@@ -1,10 +1,12 @@
 "Relationships to main_py - Registered in Flask app"
 "Creates the Flask app, sets config, registers routes"
-def create_flask():
-    return "none"
+class App():
 
-def set_config():
-    return "none"
+        def create_flask():
+                return None
 
-def register_route():
-    return "none"
+        def set_config():
+                return None
+
+        def register_route():
+                return None
