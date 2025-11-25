@@ -17,7 +17,7 @@ def test_make_guess():
             f"Expected {expected}, \n"
             f"but got {result}"
         )
-        assert result == expected, msg
+        assert test_result == expected, msg
 
 def test_display_word():
         """Test to check that the word and the blanks are 
@@ -38,7 +38,7 @@ def test_display_word():
             f"Expected {expected}, \n"
             f"but got {result}"
         )
-        assert result == expected, msg
+        assert test_result == expected, msg
 
 def test_remaining_attempts():
         test_attempts = [11,10,1,0,-1]
@@ -47,9 +47,9 @@ def test_remaining_attempts():
         for x in test_attempts:
                 result = Game.remaining_attempts(x)
                 test_result.append(result)
-        msg = (f"Expected {expected}/n"
+        msg = (f"Expected {expected}\n"
                f"but got {result}")
-        assert result == expected, msg
+        assert test_result == expected, msg
 
 def test_to_dict_basic_structure():
         game = Game(word = "lockleaze")
@@ -168,7 +168,7 @@ def test_from_dict_invalid_guessed_letters():
         """Check that an error is raised if invalid values are entered"""
         data = {
                 "word": "python",
-                "guessed_letters": [1, 2, 3],  # invalid types
+                "guessed_letters": [1, 2, 3],
                 "attempts_left": 5,
                 "wrong_guesses": []
         }
