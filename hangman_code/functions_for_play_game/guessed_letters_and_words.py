@@ -1,13 +1,20 @@
-def used_letters_function(letter, used_letters):
-       #This will make a list of used letters
-       #Ensure all letters are to lower, white space removed etc
-       #This currently has a bug: The list is not being appended. Rather,
-       # it is being overwritten.
-       used_letters.append(letter)
-       return used_letters
+stored_inputs = []
 
-def guessed_words_function(guessed_word, words_guessed):
-       #This will make a list of previously guessed words
-       return None
+def store_input(text):
+    text = text.lower()          # Step 1: convert to lowercase
+    stored_inputs.append(text)   # Add text to the end of the list
 
-used_letters_function("F", ["D","G"])
+def show_matrix():
+    for index, item in enumerate(stored_inputs, start=1):   # Number each item
+        print(f"{index}: {item}")                           # Print each row
+
+def clear_storage():
+    stored_inputs.clear()        # Clear the stored inputs list
+
+
+
+
+
+
+
+
