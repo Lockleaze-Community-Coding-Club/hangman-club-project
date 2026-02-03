@@ -1,15 +1,12 @@
-stored_inputs = []
+def used_letters_function(letter_list, new_text):
+    letter_list [:]= [item.lower() for item in letter_list]
+            
+    new_text = new_text.lower()
+    # Step 1: convert to lowercase
+    letter_list.append(new_text)   # Add text to the end of the list
+    print(letter_list)
 
-def store_input(text):
-    text = text.lower()          # Step 1: convert to lowercase
-    stored_inputs.append(text)   # Add text to the end of the list
 
-def show_matrix():
-    for index, item in enumerate(stored_inputs, start=1):   # Number each item
-        print(f"{index}: {item}")                           # Print each row
-
-def clear_storage():
-    stored_inputs.clear()        # Clear the stored inputs list
 
 
 
