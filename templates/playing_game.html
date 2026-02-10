@@ -67,29 +67,96 @@
   const ctx = c.getContext("2d");
 
   // Only draw this line if bit 0 (1) is set
+// Only draw this line if bit 0 (1) is set
   if (hasBit(lineLength, 1)) {
     ctx.beginPath();
-    ctx.moveTo(10, 90);
-    ctx.lineTo(10, 200);
+    ctx.moveTo(0, 200);
+    ctx.lineTo(50, 200);
     ctx.stroke();
   }
 
   // Only draw this line if bit 1 (2) is set
   if (hasBit(lineLength, 2)) {
     ctx.beginPath();
-    ctx.moveTo(20, 20);
-    ctx.lineTo(20, 100);
+    ctx.moveTo(25, 200);
+    ctx.lineTo(25, 0);
     ctx.stroke();
   }
 
-  // Only draw this line if bit 2 (4) is set
-  
+  // Only draw this line if bit 2 (3) is set
+
   if (hasBit(lineLength, 3)) {
     ctx.beginPath();
-    ctx.moveTo(20, 20);
-    ctx.lineTo(100, 20);
+    ctx.moveTo(25, 0);
+    ctx.lineTo(200, 0);
     ctx.stroke();
   }
+
+   // Only draw this line if bit 3 (4) is set
+
+  if (hasBit(lineLength, 4)) {
+    ctx.beginPath();
+    ctx.moveTo(25, 25);
+    ctx.lineTo(50, 0);
+    ctx.stroke();
+  }
+
+    // Only draw this line if bit 4 (5) is set
+
+  if (hasBit(lineLength, 5)) {
+    ctx.beginPath();
+    ctx.moveTo(150, 0);
+    ctx.lineTo(150, 25);
+    ctx.stroke();
+  }
+
+ // Only draw this line if bit 5 (6) is set
+
+  if (hasBit(lineLength, 6)) {
+    ctx.beginPath();
+    ctx.arc(150, 37.5,12.5,0,Math.PI*2);
+       ctx.fill();
+  }
+
+   // Only draw this line if bit 6 (7) is set
+
+  if (hasBit(lineLength, 7)) {
+    ctx.beginPath();
+     ctx.moveTo(150, 50);
+    ctx.lineTo(150, 100);
+    ctx.stroke();
+  }
+
+//These lines below this point will need numbers adjusted to be 8 & 9
+     // Only draw this line if bit 6 (7) is set
+
+  if (hasBit(lineLength, 7)) {
+    ctx.beginPath();
+     ctx.moveTo(150, 100);
+    ctx.lineTo(125, 125);
+    ctx.stroke();
+
+    ctx.beginPath();
+     ctx.moveTo(150, 100);
+    ctx.lineTo(175, 125);
+    ctx.stroke();
+  }
+
+  // Only draw this line if bit 6 (7) is set
+
+  if (hasBit(lineLength, 7)) {
+    ctx.beginPath();
+     ctx.moveTo(125, 75);
+    ctx.lineTo(175, 75);
+    ctx.stroke();
+  }
+</script>
+
+
+
+  </body>
+</html>
+  
 
 
 
