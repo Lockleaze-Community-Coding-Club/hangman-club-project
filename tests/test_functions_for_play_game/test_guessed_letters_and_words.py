@@ -8,9 +8,10 @@ from hangman_code.functions_for_play_game.guessed_letters_and_words import used_
 def test_used_letters_function():
     letter_list = ["X", "C", "L"]
     new_text = "U"
-    used_letters_function(letter_list, new_text)
+    result = used_letters_function(letter_list, new_text)
        #This will make a list of used letters
-    assert letter_list == ["x", "c", "l","u"] 
+    assert result == ["x", "c", "l","u"] 
        #if condition returns true then nothing happens, if false then assertion error is raised
+    print (result)
     return None
 
