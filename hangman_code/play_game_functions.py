@@ -12,7 +12,6 @@
 #-----------------------------------------------------------------------------
 from enum import Enum
 from hangman_code.game import Game
-from hangman_code.functions_for_play_game.validate_input import Validate_input
 from hangman_code.functions_for_play_game.make_guess import Make_guess
 from hangman_code.functions_for_play_game.game_status_function import Current_game_status
 from hangman_code.functions_for_play_game.start_game import Start_game
@@ -73,17 +72,17 @@ def play_game(current_game: dict, letter, word_attempt):
         while game["attempts_remaining"] > 0 and not game_closed:
 
 
-                try:
+                #try:
                        
-                        Validate_input(letter, game["used_letters"])
+                        #Validate_input(letter, game["used_letters"])
 
                 
-                except (TypeError, ValueError):
-                        game["message"] = "Invalid input, try again"
-                        return game
+                #except (TypeError, ValueError):
+                        #game["message"] = "Invalid input, try again"
+                        #return game
 
 
-                else:
+                #else:
                         results = Make_guess(letter, game["word"], game["guessed_word"])
                         #This will update the status of the game e.g.
                                 # Is Won, Is Lost, In Play                        
@@ -129,8 +128,9 @@ def play_game(current_game: dict, letter, word_attempt):
                                 #this logic should go into the
                                 #Start_game_selection function
 
-                finally:
-                       is_closed(load_game == 4, json_filename, game)
+                        #finally:
+                                #is_closed(load_game == 4, json_filename, game)
+                                
                        #Logic to be worked out
          #The dictionary will now be updated - ready to store in persistence
          # if we wanted to resume the game later"""
