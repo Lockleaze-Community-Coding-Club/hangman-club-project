@@ -3,27 +3,22 @@
 # Hangman Club Project Quality Badges
 <table>
   <tr>
-    <!-- Main Branch Badges -->
+    <!-- Master Branch Badges -->
     <td align="center">
       **Main Branch Coverage**<br>
       <a href="https://codecov.io/gh/Lockleaze-Community-Coding-Club/hangman-club-project/branch/main">
-        <img src="https://codecov.io/gh/Lockleaze-Community-Coding-Club/hangman-club-project/graph/badge.svg?token=4K3REWZ51J" alt="Main Branch Coverage" width="120" height="20">
+        <img src="https://codecov.io/gh/Lockleaze-Community-Coding-Club/hangman-club-project/graph/badge.svg?token=4K3REWZ51J" alt="Main Branch Coverage" width="" height="">
       </a>
     </td>
-    <td align="center">
-      **Main Branch Tests**<br>
-      <a href="https://gist.github.com/Rfp21/8f596c67ab549c273d1207d4ba5a55df">
-        <img src="https://gist.github.com/Rfp21/90fb2d9a1d7587a677b407d04de38e17/raw/badge.svg" alt="Main Branch Test Pass Rate" width="150" height="20">
-      </a>
     </td>
     <td align="center">
-      **Main Branch Test Summary**<br>
+      **Master Branch Test Summary**<br>
       <a href="https://gist.github.com/Rfp21/565e2174d18c6a53b22faa4a4c02141a">
-        <img src="https://gist.github.com/Rfp21/565e2174d18c6a53b22faa4a4c02141a/raw/test-summary.svg" alt="Main Branch Test Summary" width="120" height="20">
+        <img src="https://gist.github.com/Rfp21/565e2174d18c6a53b22faa4a4c02141a/raw/test-summary.svg" alt="Master Branch Test Summary" width="" height="">
       </a>
     </td>
     <td align="center">
-      **Main Branch CodeCov Sunburst**<br>
+      **Master CodeCov Sunburst**<br>
       <a href="https://codecov.io/gh/Lockleaze-Community-Coding-Club/hangman-club-project/branch/main">
         <img src="https://codecov.io/gh/Lockleaze-Community-Coding-Club/hangman-club-project/graphs/sunburst.svg?token=4K3REWZ51J" alt="Main Branch Sunburst" width="200" height="150">
       </a>
@@ -34,23 +29,18 @@
     <td align="center">
       **Dev Branch Coverage**<br>
       <a href="https://codecov.io/gh/Lockleaze-Community-Coding-Club/hangman-club-project/branch/dev">
-        <img src="https://codecov.io/gh/Lockleaze-Community-Coding-Club/hangman-club-project/branch/dev/graph/badge.svg?token=4K3REWZ51J" alt="Dev Branch Coverage" width="120" height="20">
+        <img src="https://codecov.io/gh/Lockleaze-Community-Coding-Club/hangman-club-project/branch/dev/graph/badge.svg?token=4K3REWZ51J" alt="Dev Branch Coverage" width="" height="">
       </a>
     </td>
-    <td align="center">
-      **Dev Branch Tests**<br>
-      <a href="https://gist.github.com/Rfp21/90fb2d9a1d7587a677b407d04de38e17">
-        <img src="https://gist.githubusercontent.com/Rfp21/90fb2d9a1d7587a677b407d04de38e17/raw/badge.svg?cache=1" alt="Dev Branch Test Pass Rate" width="150" height="100">
-      </a>
     </td>
     <td align="center">
       **Dev Branch Test Summary**<br>
       <a href="https://gist.github.com/Rfp21/31c462ebe1d7a75e5a8e367fcb0c538e">
-        <img src="https://gist.githubusercontent.com/Rfp21/31c462ebe1d7a75e5a8e367fcb0c538e/raw/1ce09eef47420f2f6c9c319ab9aeee5867cfdd78/test-summary.svg" alt="Dev Branch Test Summary" width="120" height="40">
+        <img src="https://gist.githubusercontent.com/Rfp21/31c462ebe1d7a75e5a8e367fcb0c538e/raw/test-summary.svg" alt="Dev Branch Test Summary" width="" height="">
       </a>
     </td>
     <td align="center">
-      **Dev Branch CodeCov Sunburst**<br>
+      **Dev CodeCov Sunburst**<br>
       <a href="https://codecov.io/gh/Lockleaze-Community-Coding-Club/hangman-club-project/branch/dev">
         <img src="https://codecov.io/gh/Lockleaze-Community-Coding-Club/hangman-club-project/branch/dev/graphs/sunburst.svg?token=4K3REWZ51J" alt="Dev Branch Sunburst" width="200" height="150">
       </a>

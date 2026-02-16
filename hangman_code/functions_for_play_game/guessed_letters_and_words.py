@@ -1,13 +1,18 @@
-def used_letters_function(letter, used_letters):
-       #This will make a list of used letters
-       #Ensure all letters are to lower, white space removed etc
-       #This currently has a bug: The list is not being appended. Rather,
-       # it is being overwritten.
-       used_letters.append(letter)
-       return used_letters
+def used_letters_function(letter_list, new_text):
+    letter_list [:]= [item.lower() for item in letter_list]
+            
+    new_text = new_text.lower()
+    # Step 1: convert to lowercase
+    letter_list.append(new_text)   # Add text to the end of the list
+    return letter_list
+    print(letter_list)
 
-def guessed_words_function(guessed_word, words_guessed):
-       #This will make a list of previously guessed words
-       return None
 
-used_letters_function("F", ["D","G"])
+
+
+
+
+
+
+
+
