@@ -14,11 +14,11 @@ from enum import Enum
 from hangman_code.game import Game
 from hangman_code.functions_for_play_game.make_guess import Make_guess
 from hangman_code.functions_for_play_game.game_status_function import Current_game_status
-from hangman_code.functions_for_play_game.start_game import Start_game
-from hangman_code.functions_for_play_game.game_status_function import setup_new_guess
+#from hangman_code.functions_for_play_game.start_game import Start_game
+#from hangman_code.functions_for_play_game.game_status_function import setup_new_guess
 from hangman_code.functions_for_play_game.game_status_function import is_won
 from hangman_code.functions_for_play_game.game_status_function import is_lost
-from hangman_code.functions_for_play_game.game_status_function import is_closed
+#from hangman_code.functions_for_play_game.game_status_function import is_closed
 from hangman_code.functions_for_play_game.data_handling import update_in_play_data
 from hangman_code.functions_for_play_game.start_game import Start_game_Selection
 #-----------------------------------------------------------------------------

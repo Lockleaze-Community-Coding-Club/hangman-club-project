@@ -1,7 +1,7 @@
-from hangman_code.word_selection import choose_word
-from hangman_code.game import Game
-from hangman_code.functions_for_play_game.data_handling import from_dict
-from enum import Enum
+#from hangman_code.word_selection import choose_word
+#from hangman_code.game import Game
+#from hangman_code.functions_for_play_game.data_handling import from_dict
+#from enum import Enum
 
 
 def Start_game_Selection(load_game):

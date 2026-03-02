@@ -1,12 +1,12 @@
 from enum import Enum
 from hangman_code.functions_for_play_game.data_handling import to_dict
 from hangman_code.functions_for_play_game.data_handling import update_data
-from hangman_code.functions_for_play_game.scores_and_attempts_function import remaining_attempts_function
-from hangman_code.functions_for_play_game.scores_and_attempts_function import update_score_function
-from hangman_code.functions_for_play_game.scores_and_attempts_function import update_cunulative_number_of_games_played
-from hangman_code.functions_for_play_game.scores_and_attempts_function import update_cunulative_number_of_games_won
-from hangman_code.functions_for_play_game.scores_and_attempts_function import update_cunulative_score_function
-from hangman_code.functions_for_play_game.player import Player
+#from hangman_code.functions_for_play_game.scores_and_attempts_function import remaining_attempts_function
+#from hangman_code.functions_for_play_game.scores_and_attempts_function import update_score_function
+#from hangman_code.functions_for_play_game.scores_and_attempts_function import update_cunulative_number_of_games_played
+#from hangman_code.functions_for_play_game.scores_and_attempts_function import update_cunulative_number_of_games_won
+#from hangman_code.functions_for_play_game.scores_and_attempts_function import update_cunulative_score_function
+#from hangman_code.functions_for_play_game.player import Player
 #--------------------------------------------------------------------------
 
 
