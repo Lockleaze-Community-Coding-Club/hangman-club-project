@@ -10,8 +10,7 @@
 # these functions are all in the functions_for_play_game folder
 
 #-----------------------------------------------------------------------------
-from enum import Enum
-from hangman_code.game import Game
+
 from hangman_code.functions_for_play_game.make_guess import Make_guess
 from hangman_code.functions_for_play_game.game_status_function import Current_game_status
 #from hangman_code.functions_for_play_game.start_game import Start_game
