@@ -121,7 +121,7 @@ def new_game (Game_status):
 
 #-----------------------------------------------------------------------
 
-
+    # Will also need to consider how this interacts with player
     # get word from word selection
     # Mutate guessed word into a list
     # get game object and data from data_handling.initialise_game_and_data

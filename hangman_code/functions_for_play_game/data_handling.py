@@ -4,9 +4,10 @@ from hangman_code.functions_for_play_game.guessed_letters_and_words import guess
 from hangman_code.functions_for_play_game.scores_and_attempts_function import remaining_attempts_function
 from hangman_code.functions_for_play_game.scores_and_attempts_function import update_score_function
 from hangman_code.game import Game
+from hangman_code.functions_for_play_game.player import Player
 
-def initialise_game_and_data():
-        data_constructor = Game()
+def initialise_game_and_data(object):
+        data_constructor = object()
         data = data_constructor.__dict__
         return data 
 
@@ -86,3 +87,32 @@ def to_dict(data, json_filename):
                 send_data = dumps(data, indent=4)
                 with open(json_filename, "w") as f:
                         f.write(send_data)
+
+def to_dict(self):
+        """Serialize the game to plain types (for session / JSON)."""
+        return {
+            "game_id": self.game_id,
+            "game_name": self.get_game_name(),
+            "score": self.score,
+            "word": self.word,
+            "template": self.template,
+            "message": self.message,
+            "used_letters": self.used_letters,
+            "accepted_letters": self.accepted_letters,
+            "game_status": self.game_status.value,  # store enum as int
+        }
+
+@classmethod
+def from_dict(cls, data: dict) -> "Game":
+        """Rebuild a Game instance from a dict (e.g. from session)."""
+        return cls(
+            game_name=data.get("game_name",""),
+            word=data["word"],
+            game_id=data.get("game_id", 1),
+            score=data.get("score", 10),
+            template=data.get("template"),
+            message=data.get("message"),
+            used_letters=data.get("used_letters", []),  # ✅ default to []
+            accepted_letters=data.get("accepted_letters", []),
+            game_status=Game.Game_status(data.get("game_status", 0)),
+        )
