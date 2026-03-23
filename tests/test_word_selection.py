@@ -5,11 +5,30 @@ from hangman_code.word_selection import choose_word
 from hangman_code.word_selection import parse_words
 #from hangman_code.functions_for_play_game.data_handling import to_dict
 
+@pytest.fixture
+def listofwords():
+    expected = {
+        "Apple",
+        "Banana",
+        "CARROT",
+        "SticK",
+        "Banana",
+        "orange",
+        "1sha",
+        "Banana",
+        "Dog",
+        "Cat",
+        "Thisisaverylongwordnotrecognisable",
+        "a",
+        "it",
+        "shit"
+        }
+    return expected
 
 def test_input_error():
     """Check that an error is raised if words.txt does not exist."""
     with pytest.raises(FileNotFoundError):
-        parse_words("notfound.txt")
+        parse_words("words.txt")
 
 def test_parse_words_returns_list_of_words():
     """Check that the words.txt file is parsed as a list of words."""
@@ -29,8 +48,9 @@ def test_choose_word_error_returned_if_no_words_in_list():
     with pytest.raises(ValueError):
          choose_word(fake_list)
 
-def test_word_selection_randomness():
-    results = {choose_word() for _ in range(100)}
+def test_word_selection_non_repitition(listofwords):
+    
+    results = {choose_word(listofwords) for i in range(100)}
     # Expect that more than one unique word was selected
     msg = f"Word selection not random enough: {results}"
     assert len(results) > 1, msg

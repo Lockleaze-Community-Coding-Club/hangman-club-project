@@ -4,7 +4,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 import pytest
-from hangman_code.functions_for_play_game.guessed_letters_and_words import used_letters_function
+from functions_for_play_game.guessed_letters import used_letters_function
 def test_used_letters_function():
     letter_list = ["X", "C", "L"]
     new_text = "U"

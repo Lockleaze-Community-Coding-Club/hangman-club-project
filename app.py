@@ -26,7 +26,6 @@ def index():
         return render_template("playing_game.html", game=session["game"],alphabet=string.ascii_uppercase)
     return render_template("index.html")
 
-
 @app.route("/guess", methods=["POST"])
 def guess():
 

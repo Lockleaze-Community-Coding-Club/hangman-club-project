@@ -1,4 +1,6 @@
 
+## Tidy up per meeting 16th march
+
 #from word_selection import choose_word
 #from game import Game
 #from templates import Template
@@ -10,29 +12,23 @@
 # these functions are all in the functions_for_play_game folder
 
 #-----------------------------------------------------------------------------
-from enum import Enum
-from hangman_code.game import Game
-from hangman_code.functions_for_play_game.validate_input import Validate_input
+
 from hangman_code.functions_for_play_game.make_guess import Make_guess
 from hangman_code.functions_for_play_game.game_status_function import Current_game_status
-from hangman_code.functions_for_play_game.start_game import Start_game
-from hangman_code.functions_for_play_game.game_status_function import setup_new_guess
+#from hangman_code.functions_for_play_game.start_game import Start_game
+#from hangman_code.functions_for_play_game.game_status_function import setup_new_guess
 from hangman_code.functions_for_play_game.game_status_function import is_won
 from hangman_code.functions_for_play_game.game_status_function import is_lost
-from hangman_code.functions_for_play_game.game_status_function import is_closed
+#from hangman_code.functions_for_play_game.game_status_function import is_closed
 from hangman_code.functions_for_play_game.data_handling import update_in_play_data
-from hangman_code.functions_for_play_game.start_game import Start_game_Selection
-#-----------------------------------------------------------------------------
-"""This is me showing off my kudos"""
-#-----------------------------------------------------------------------------
-#JUST WANTED TO HIGHLIGHT THIS IS NOT CHATGPT GENERATED. PURE ROANNE
+from hangman_code.functions_for_play_game.start_game import new_game
 #-----------------------------------------------------------------------------
 """The list of public parameters for playing :
 These are needed as user inputs from app"""
 #-----------------------------------------------------------------------------
 
-
 letter = None
+player_name = None
 
 #-----------------------------------------------------------------------------
 """Below is the list of private parameters for running main"""
@@ -40,7 +36,7 @@ letter = None
 #-----------------------------------------------------------------------------
 
 json_filename = "persistence.json"
-game_closed = False
+Game_status = 1
 #-----------------------------------------------------------------------------
 """This is the constructor for the dictionary with various the
 inputs needed in functions_for_play_game.The initialised data itself is in
@@ -59,9 +55,10 @@ game.py"""
 #-----------------------------------------------------------------------------
 """This is the actual game logic / flow / main programme"""
 #-----------------------------------------------------------------------------
-def load_game(selection):
-        current_game = Start_game_Selection(selection)
-        return current_game
+
+
+current_game = new_game(Game_status, player_name)
+
 
 def play_game(current_game: dict, letter, word_attempt):
        
@@ -73,17 +70,17 @@ def play_game(current_game: dict, letter, word_attempt):
         while game["attempts_remaining"] > 0 and not game_closed:
 
 
-                try:
+                #try:
                        
-                        Validate_input(letter, game["used_letters"])
+                        #Validate_input(letter, game["used_letters"])
 
                 
-                except (TypeError, ValueError):
-                        game["message"] = "Invalid input, try again"
-                        return game
+                #except (TypeError, ValueError):
+                        #game["message"] = "Invalid input, try again"
+                        #return game
 
 
-                else:
+                #else:
                         results = Make_guess(letter, game["word"], game["guessed_word"])
                         #This will update the status of the game e.g.
                                 # Is Won, Is Lost, In Play                        
@@ -129,8 +126,9 @@ def play_game(current_game: dict, letter, word_attempt):
                                 #this logic should go into the
                                 #Start_game_selection function
 
-                finally:
-                       is_closed(load_game == 4, json_filename, game)
+                        #finally:
+                                #is_closed(load_game == 4, json_filename, game)
+                                
                        #Logic to be worked out
          #The dictionary will now be updated - ready to store in persistence
          # if we wanted to resume the game later"""

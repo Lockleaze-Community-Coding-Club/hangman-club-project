@@ -1,20 +1,20 @@
+## MAY NEED TO BE DELETED
+
+
+from enum import Enum
 from hangman_code.functions_for_play_game.data_handling import to_dict
 from hangman_code.functions_for_play_game.data_handling import update_data
-from hangman_code.functions_for_play_game.scores_and_attempts_function import remaining_attempts_function
-from hangman_code.functions_for_play_game.scores_and_attempts_function import update_score_function
-from hangman_code.functions_for_play_game.scores_and_attempts_function import update_cunulative_number_of_games_played
-from hangman_code.functions_for_play_game.scores_and_attempts_function import update_cunulative_number_of_games_won
-from hangman_code.functions_for_play_game.scores_and_attempts_function import update_cunulative_score_function
-
+#from hangman_code.functions_for_play_game.scores_and_attempts_function import remaining_attempts_function
+#from hangman_code.functions_for_play_game.scores_and_attempts_function import update_score_function
+#from hangman_code.functions_for_play_game.scores_and_attempts_function import update_cunulative_number_of_games_played
+#from hangman_code.functions_for_play_game.scores_and_attempts_function import update_cunulative_number_of_games_won
+#from hangman_code.functions_for_play_game.scores_and_attempts_function import update_cunulative_score_function
+#from hangman_code.functions_for_play_game.player import Player
 #--------------------------------------------------------------------------
 
-# These functions below will also need to return enums - per below:
 
-   # class Game_status(Enum): # RP: This is called in game.py
-       # NEW_GAME = 0
-       # IN_PLAY = 1
-       # WON = 2
-       # LOST = 3
+
+
 
 #--------------------------------------------------------------------------
 
@@ -60,8 +60,4 @@ def factory_reset(load_game):
      return None
 #This will re-set the game and return all scores to 0
 
-#class load_game(Enum): 
-        #NEW_GAME = 0
-        #RESUME_GAME = 1
-        #EXIT_GAME = 2
-        #FACTORY_RESET = 3
+

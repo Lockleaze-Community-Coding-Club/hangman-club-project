@@ -1,3 +1,4 @@
+
 def used_letters_function(letter_list, new_text):
     letter_list [:]= [item.lower() for item in letter_list]
             
