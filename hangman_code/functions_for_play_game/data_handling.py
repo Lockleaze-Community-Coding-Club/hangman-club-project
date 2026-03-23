@@ -1,6 +1,9 @@
+## ADD IN AN ABILITY TO CREATE A GUESSED WORDS LIST FROM PERSISTENCE
+
+
 from json import load, dumps
-from hangman_code.functions_for_play_game.guessed_letters_and_words import used_letters_function
-from hangman_code.functions_for_play_game.guessed_letters_and_words import guessed_words_function
+from functions_for_play_game.guessed_letters import used_letters_function
+from functions_for_play_game.guessed_letters import guessed_words_function
 from hangman_code.functions_for_play_game.scores_and_attempts_function import remaining_attempts_function
 from hangman_code.functions_for_play_game.scores_and_attempts_function import update_score_function
 from hangman_code.game import Game

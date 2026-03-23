@@ -1,4 +1,6 @@
 
+## Tidy up per meeting 16th march
+
 #from word_selection import choose_word
 #from game import Game
 #from templates import Template
@@ -19,18 +21,14 @@ from hangman_code.functions_for_play_game.game_status_function import is_won
 from hangman_code.functions_for_play_game.game_status_function import is_lost
 #from hangman_code.functions_for_play_game.game_status_function import is_closed
 from hangman_code.functions_for_play_game.data_handling import update_in_play_data
-from hangman_code.functions_for_play_game.start_game import Start_game_Selection
-#-----------------------------------------------------------------------------
-"""This is me showing off my kudos"""
-#-----------------------------------------------------------------------------
-#JUST WANTED TO HIGHLIGHT THIS IS NOT CHATGPT GENERATED. PURE ROANNE
+from hangman_code.functions_for_play_game.start_game import new_game
 #-----------------------------------------------------------------------------
 """The list of public parameters for playing :
 These are needed as user inputs from app"""
 #-----------------------------------------------------------------------------
 
-
 letter = None
+player_name = None
 
 #-----------------------------------------------------------------------------
 """Below is the list of private parameters for running main"""
@@ -38,7 +36,7 @@ letter = None
 #-----------------------------------------------------------------------------
 
 json_filename = "persistence.json"
-game_closed = False
+Game_status = 1
 #-----------------------------------------------------------------------------
 """This is the constructor for the dictionary with various the
 inputs needed in functions_for_play_game.The initialised data itself is in
@@ -57,9 +55,10 @@ game.py"""
 #-----------------------------------------------------------------------------
 """This is the actual game logic / flow / main programme"""
 #-----------------------------------------------------------------------------
-def load_game(selection):
-        current_game = Start_game_Selection(selection)
-        return current_game
+
+
+current_game = new_game(Game_status, player_name)
+
 
 def play_game(current_game: dict, letter, word_attempt):
        

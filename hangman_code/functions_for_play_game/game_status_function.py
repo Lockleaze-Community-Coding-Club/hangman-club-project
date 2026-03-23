@@ -1,3 +1,6 @@
+## MAY NEED TO BE DELETED
+
+
 from enum import Enum
 from hangman_code.functions_for_play_game.data_handling import to_dict
 from hangman_code.functions_for_play_game.data_handling import update_data
@@ -11,12 +14,7 @@ from hangman_code.functions_for_play_game.data_handling import update_data
 
 
 
-class Game_status(Enum): # RP: I have made a note of this 
-        # in game_status_function
-        NEW_GAME = 0
-        IN_PLAY = 1
-        WON = 2
-        LOST = 3
+
 
 #--------------------------------------------------------------------------
 
@@ -62,23 +60,4 @@ def factory_reset(load_game):
      return None
 #This will re-set the game and return all scores to 0
 
-#class load_game(Enum): 
-        #NEW_GAME = 0
-        #RESUME_GAME = 1
-        #EXIT_GAME = 2
-        #FACTORY_RESET = 3
-##########################################################################
-#FUNCTIONS BELOW NEED WORK
-###########################################################################
-def get_game_status(load_game):
-        return current_game_status
 
-def set_game_status(game, game_status):
-        game_status = game_status
-        return
-
-def get_player_name(player, player_name):
-        return player_name
-    
-def set_player_name(player, player_name):
-        return  player_name

@@ -1,4 +1,5 @@
 
+## ALSO NEEDS TO GET THE LIST OF USED WORDS FROM PERSISTENCE
 
 #from persistence import Persistence
 
