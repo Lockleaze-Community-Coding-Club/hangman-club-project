@@ -8,20 +8,24 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
-  <body>
+  <body style="background-color: aquamarine;">
     <main>
         <h1>LOCKLEAZE CODING CLUB HANGMAN GAME</h1> 
-        <h2>"Make your selection Boss"</h2><br>
+        <h2>"Enter Your Name..If You Dare"</h2><br>
         <div>
-<form action="/" method="post">
-    <button type="submit" name="action" value="1">NEW GAME</button>
-    <button type="submit" name="action" value="2">RESUME GAME</button>
-    <button type="submit" name="action" value="3">FACTORY RESET</button>
+<!-- section of code for name entry button-->
+<form action="/app.py" method="post">
+  <b>Player Name:</b>
+  <input type='text' name='playername'/> 
 </form>
+</div><br>
+<form action="/" method="post">
+    <button type="submit" name="action" value="1">ENTER</button>
+  </form>
 </div><br>
 <div>
 <form action="/closed" method="post">
-    <button type="submit" name="action" value="4">EXIT</button>
+    <button type="submit" name="action" value="2">EXIT</button>
 </form>
         </div>
     </main>
