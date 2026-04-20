@@ -37,7 +37,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install -r requirements-dev.txt
-
   # ---------------------------------------------------------
   # SETUP FOR JOB: TEST
   # ---------------------------------------------------------
@@ -68,7 +67,6 @@ jobs:
       run: |
         mkdir -p test-results
         pytest --junitxml=test-results/results.xml
-
       # ---------------------------------------------------------
       # UPLOAD TEST RESULTS
       # ---------------------------------------------------------
@@ -109,7 +107,6 @@ jobs:
       run: |
         mkdir -p codecov-results
         pytest --cov . --junitxml=codecov-results/results.xml --cov-report=xml:codecov-results/coverage-service.xml
-
       # ---------------------------------------------------------
       # UPLOAD TEST RESULTS TO CODECOV
       # ---------------------------------------------------------
@@ -124,7 +121,6 @@ jobs:
        -n "service-${{ github.run_id }}" \
        -F service \
        -f codecov-results/coverage-service.xml
-
   # ---------------------------------------------------------
   # JOB: FORMAT CODE WITH BLACK
   # Ref: https://towardsdatascience.com/black-with-git-hub-actions
@@ -148,7 +144,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install black
-
     # ---------------------------------------------------------
     # FORMAT WITH BLACK
     # ---------------------------------------------------------
@@ -187,13 +182,11 @@ jobs:
         LINT_OUTPUT=$(flake8 .)
         EXIT_CODE=$?
         echo "$LINT_OUTPUT"
-
         if [ $EXIT_CODE -ne 0 ]; then
         echo "Linting failed!"
         exit 1
         fi
         set -e   # restore exit-on-error
-
       # ---------------------------------------------------------
       # MOVING ONTO TEST REPORT PUBLICATION
       # ---------------------------------------------------------
@@ -249,7 +242,6 @@ jobs:
       - name: Generate Markdown summary from JSON
         run: |
               TEST_JSON='${{ steps.test-results.outputs.json }}'
-
               TESTS=$(echo "$TEST_JSON" | jq -r '.formatted.stats.tests')
               PASSED=$(echo "$TEST_JSON" | jq -r '.formatted.stats.tests_succ')
               FAILED=$(echo "$TEST_JSON" | jq -r '.formatted.stats.tests_fail')
@@ -258,7 +250,6 @@ jobs:
               SUITES=$(echo "$TEST_JSON" | jq -r '.formatted.stats.suites')
               FILES=$(echo "$TEST_JSON" | jq -r '.formatted.stats.files')
               DURATION=$(echo "$TEST_JSON" | jq -r '.formatted.stats.duration')
-
               echo "## 🧪 Test Summary" > test-summary.md
               echo "" >> test-summary.md
               echo "**Overall Results**" >> test-summary.md
@@ -272,8 +263,6 @@ jobs:
               echo "- Test suites: $SUITES" >> test-summary.md
               echo "- Test files: $FILES" >> test-summary.md
               echo "- Duration: ${DURATION}s" >> test-summary.md
-
-
       - name: Debug Markdown
         run: cat test-summary.md
 
@@ -283,7 +272,6 @@ jobs:
         run: |
             # Extract test results from JSON
             TEST_JSON='${{ steps.test-results.outputs.json }}'
-
             TESTS=$(jq -r '.formatted.stats.tests' <<< "$TEST_JSON")
             PASSED=$(jq -r '.formatted.stats.tests_succ' <<< "$TEST_JSON")
             FAILED=$(jq -r '.formatted.stats.tests_fail' <<< "$TEST_JSON")
@@ -291,14 +279,12 @@ jobs:
             SUITES=$(jq -r '.formatted.stats.suites' <<< "$TEST_JSON")
             SKIPPED=$(jq -r '.formatted.stats.tests_skip' <<< "$TEST_JSON")
             FILES=$(jq -r '.formatted.stats.files' <<< "$TEST_JSON")
-
             # Optional: calculate success rate for coloring
             if [ "$TESTS" -gt 0 ]; then
                   SUCCESS_PERCENT=$(( PASSED * 100 / TESTS ))
             else
                   SUCCESS_PERCENT=0
             fi
-
             # Pick badge color based on success rate
             if [ "$SUCCESS_PERCENT" -eq 100 ]; then
                   COLOR="#4c1"       # green
@@ -307,7 +293,6 @@ jobs:
             else
                   COLOR="#e05d44"    # red
             fi
-
             # Set SVG dimensions
             WIDTH=480
             HEIGHT=70
@@ -317,7 +302,6 @@ jobs:
             LINE2_Y=42
             LINE3_Y=62
             TITLE_Y=38
-
             # Generate dynamic SVG badge
             cat <<EOF > test-summary.svg
             <svg xmlns="http://www.w3.org/2000/svg"
@@ -325,11 +309,9 @@ jobs:
                  height="$HEIGHT"
                  role="img"
                  aria-label="test summary">
-
               <!-- Background -->
               <rect rx="6" width="$WIDTH" height="$HEIGHT" fill="$COLOR"/>
               <rect rx="6" x="$LEFT_WIDTH" width="$RIGHT_WIDTH" height="$HEIGHT" fill="#ffffff"/>
-
               <!-- Title -->
               <text x="$((LEFT_WIDTH/2))" y="$TITLE_Y"
                     fill="#fff"
@@ -339,21 +321,18 @@ jobs:
                     font-weight="bold">
                 tests
               </text>
-
               <!-- Line 1 -->
               <text x="$((LEFT_WIDTH + 15))" y="$LINE1_Y" fill="#333333"
                     font-family="DejaVu Sans, Verdana, sans-serif"
                     font-size="16">
                 $TESTS tests +$TESTS  $PASSED passed ✅ +$PASSED  $FAILED failed ❌ +$FAILED
               </text>
-
               <!-- Line 2 -->
               <text x="$((LEFT_WIDTH + 15))" y="$LINE2_Y" fill="#333333"
                     font-family="DejaVu Sans, Verdana, sans-serif"
                     font-size="16">
                 $SUITES suites +$SUITES    $SKIPPED skipped 💤 ±$SKIPPED
               </text>
-
               <!-- Line 3 -->
               <text x="$((LEFT_WIDTH + 15))" y="$LINE3_Y" fill="#333333"
                     font-family="DejaVu Sans, Verdana, sans-serif"
@@ -362,8 +341,6 @@ jobs:
               </text>
             </svg>
             EOF
-
-
       - name: Upload test summary to Gist - dev
         uses: andymckay/append-gist-action@6e8d64427fe47cbacf4ab6b890411f1d67c07f3e
         if: >
@@ -384,4 +361,5 @@ jobs:
           token: ${{ secrets.GIST_TOKEN }}
           gistURL: https://gist.github.com/Rfp21/565e2174d18c6a53b22faa4a4c02141a
           file: test-summary.svg
+
 
