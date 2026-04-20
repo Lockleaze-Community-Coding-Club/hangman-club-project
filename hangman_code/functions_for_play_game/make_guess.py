@@ -1,28 +1,29 @@
-def Make_guess(letter, word, guessed_word):
+def Make_guess(letter, word, word_progress):
 
         letter_found = False
                 
-        word_with_guessed_letters = list(guessed_word)
+        word_with_guessed_letters = list(word_progress)
                 
         for i,x in enumerate(word):
 
-                if letter == x:
+                if letter == x :
                                 
                         word_with_guessed_letters [i] = letter
                         letter_found = True
 
+
         if letter_found:
                 return {
-                "success": True,
                 "message": "Good job genius",
-                "word_progress": word_with_guessed_letters
+                "word_progress": word_with_guessed_letters,
+                "letter_found": True
                 }
         
         else:
                 return {
-                "success": False,
                 "message": "Bad guess you lemon",
-                "word_progress": word_with_guessed_letters
+                "word_progress": word_with_guessed_letters,
+                "letter_found": False                
                 }
 
 ## ADD THESE IN AS UPDATES IN MAKE GUESS

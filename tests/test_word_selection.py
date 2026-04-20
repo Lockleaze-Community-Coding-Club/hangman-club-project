@@ -38,6 +38,7 @@ def test_parse_words_returns_list_of_words():
 
 def test_single_word_chosen():
     """Check that a single word is chosen from the list"""
+    ## choose_words also needs to take in where the persistence file is
     fake_list = ["red","yellow","pink","green"]
     result = choose_word(fake_list)
     assert result in fake_list, f"Expected one of {fake_list} but got {result}"
