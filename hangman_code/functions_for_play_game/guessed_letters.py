@@ -1,16 +1,11 @@
-
-def used_letters_function(letter_list, new_text):
-    letter_list [:]= [item.lower() for item in letter_list]
+def used_letters_function(used_letters, letter):
+   
+    used_letters [:]= [item.lower() for item in used_letters]
             
-    new_text = new_text.lower()
+    letter = letter.lower()
     # Step 1: convert to lowercase
-    letter_list.append(new_text)   # Add text to the end of the list
-    return letter_list
-    print(letter_list)
-
-
-
-
+    used_letters.append(letter)   # Add text to the end of the list
+    return used_letters
 
 
 
