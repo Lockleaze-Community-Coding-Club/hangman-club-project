@@ -22,7 +22,7 @@ def choose_word(available_words_list):
 
                 chosen_word = [char for char in chosen_word]
 
-        return (chosen_word, available_words_list)
+                return (chosen_word, available_words_list)
 
 
 #Examples of how to use the above:
