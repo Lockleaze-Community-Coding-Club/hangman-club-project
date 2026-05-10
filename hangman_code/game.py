@@ -29,7 +29,6 @@ class Game:
                 accepted_letters: list[str] | None = None,
                 attempts_remaining: int = 10,
                 word_progress: list[str] | None = None,
-                start_game_selection: load_game = load_game.NEW_GAME,
                     ) -> None:
         
                 self.word = [""] if word is None else word
@@ -43,7 +42,6 @@ class Game:
                 self.accepted_letters = [] if accepted_letters is None else accepted_letters
                 self.attempts_remaining = attempts_remaining
                 self.word_progress = [""] if word_progress is None else word_progress
-                self.start_game_selection = start_game_selection
 
 ### FOR ECERY SINGLE ATTRIBUTE, MAKE A GET AND A SET
 

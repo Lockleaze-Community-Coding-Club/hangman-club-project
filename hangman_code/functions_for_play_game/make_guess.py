@@ -1,4 +1,4 @@
-def Make_guess(letter, word, word_progress):
+def make_guess(letter, word, word_progress):
 
         letter_found = False
                 
@@ -28,7 +28,7 @@ def Make_guess(letter, word, word_progress):
 
 ## ADD THESE IN AS UPDATES IN MAKE GUESS
 
-def remaining_attempts_function(attempts_remaining):
+def remaining_attempts_function(attempts_remaining, letter_found):
        #This function will update the number of remaining attempts left
        return attempts_remaining
 

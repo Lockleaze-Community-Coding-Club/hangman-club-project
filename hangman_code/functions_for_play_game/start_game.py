@@ -4,15 +4,15 @@
 #from enum import Enum
 
 
-def new_game (Game_status, player_name):
+def new_game (game_status, player_name):
 
 
-    game_object = {Game_status : 0} # placeholder result until game_object is initialised properly
+    game_object = {game_status : 0} # placeholder result until game_object is initialised properly
     return game_object
 
 # or 
 
-def resume_game (Game_status):
+def resume_game (game_status):
     
     # Consider that this enum class exists in game.py in the function design
      # You will need to create a object from Game
@@ -25,10 +25,7 @@ def resume_game (Game_status):
         #LOST = 3
 
         # Return the game object
-    game_object = {Game_status : 1} # placeholder until game_object is initialised properly
+    game_object = {game_status : 1} # placeholder until game_object is initialised properly
     return game_object
 
-def Start_game(current_game, letter):
-    test = current_game["used_letters"].append(letter)  # modifies in place
-    print(test)
-    return current_game
+

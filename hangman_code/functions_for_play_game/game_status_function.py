@@ -15,7 +15,7 @@
 
 #--------------------------------------------------------------------------
 
-def Current_game_status(current_game_status):
+def current_game_status(word_progress, attempts_remaining):
        #This function will update the status of the game e.g.
        # Is Won, Is Lost, In Play
        #Set it to return 1 for trial purposes. Function needs written.

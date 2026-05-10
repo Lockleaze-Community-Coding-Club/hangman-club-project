@@ -6,6 +6,7 @@ pytest==8.4.1
 pytest-xdist==3.6.1
 pytest-cov==4.0.0
 pytest-json-report==1.5.0
+pytest-mock==3.14.0
 codecov==2.1.13
 
 # Linting and formatting
