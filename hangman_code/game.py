@@ -3,7 +3,7 @@
 from enum import Enum
 class Game:
 
-        class load_game(Enum): 
+        class Game_choice(Enum): 
                 NEW_GAME = 1
                 RESUME_GAME = 2
                 FACTORY_RESET = 3
@@ -30,7 +30,6 @@ class Game:
                 guess_result: list[str] | None = None,
                 attempts_remaining: int = 10,
                 guessed_word: list[str] | None = None,
-                start_game_selection: load_game = load_game.NEW_GAME,
                     ) -> None:
         
                 self.word = [""] if word is None else word
