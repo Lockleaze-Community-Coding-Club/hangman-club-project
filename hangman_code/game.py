@@ -20,7 +20,7 @@ class Game:
                 self,
                 word: list[str] | None = None,
                 game_id: int | None = None,
-                current_score: int = 0,
+                score: int = 0,
                 player_name: str | None = None,
                 template = "index",
                 message: str = "initial message",
@@ -34,7 +34,7 @@ class Game:
         
                 self.word = [""] if word is None else word
                 self.game_id = id(self) if game_id is None else game_id
-                self.current_score = current_score
+                self.set_score(score)
                 self.player_name = player_name
                 self.template = template
                 self.message = message
@@ -44,19 +44,27 @@ class Game:
                 self.guess_result = [""] if guess_result is None else guess_result
                 self.attempts_remaining = attempts_remaining
                 self.guessed_word = [""] if guessed_word is None else guessed_word
-                self.start_game_selection = start_game_selection
 
 ### FOR ECERY SINGLE ATTRIBUTE, MAKE A GET AND A SET
 
-def get_game_status(load_game):
-        return current_game_status
 
-def set_game_status(game, game_status):
-        game_status = game_status
-        return
+        def set_score(self, score):
+                if isinstance(score, int):
+                        self.score = score
+                elif score == None:
+                        self.score = 0
+                else:
+                        raise ValueError("score must be an integer")
+                return    
+        
+        def set_game_status(game_status):
+                game_status = game_status
+                #raise ValueError ('error on init')
+                return
 
-def get_player_name(player, player_name):
-        return player_name
-    
-def set_player_name(player, player_name):
-        return  player_name
+        def get_player_name(player, player_name):
+                return player_name
+        
+        def set_player_name(player, player_name):
+                return  player_name
+        

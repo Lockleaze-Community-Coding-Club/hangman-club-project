@@ -4,6 +4,7 @@
 
 from flask import Flask, request, redirect, url_for, render_template, session
 #from hangman_code.play_game_functions import load_game
+from hangman_code.game import Game
 from hangman_code.play_game_functions import play_game
 import string
 
@@ -19,11 +20,8 @@ app.secret_key = "super-secret-key-change-this"
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        selection = request.form.get("action")
-        print(f"This is the selection : {selection}")
-        session["game"] = load_game(selection)
-        print(f"This is the game input from Start Game Selection : {session['game']}")
-        return render_template("playing_game.html", game=session["game"],alphabet=string.ascii_uppercase)
+        game = Game()
+        return render_template("playing_game.html", alphabet=string.ascii_uppercase, game=game)
     return render_template("index.html")
 
 @app.route("/guess", methods=["POST"])
