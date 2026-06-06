@@ -3,7 +3,7 @@
 # Relationship from routes_py - recieves feedback for the user and displays it"
 
 from flask import Flask, request, redirect, url_for, render_template, session
-from hangman_code.play_game_functions import load_game
+#from hangman_code.play_game_functions import load_game
 from hangman_code.play_game_functions import play_game
 import string
 
