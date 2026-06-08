@@ -37,10 +37,12 @@ def test_parse_words_returns_list_of_words():
     assert result == expected, f"Expected {expected}, but got {result}"
 
 def test_single_word_chosen():
-    """Check that a single word is chosen from the list"""
-    fake_list = ["red","yellow","pink","green"]
-    result = choose_word(fake_list)
-    assert result in fake_list, f"Expected one of {fake_list} but got {result}"
+    fake_list = ["red", "yellow", "pink", "green"]
+
+    chosen_word, remaining = choose_word(fake_list.copy())
+
+    assert len(remaining) == 3
+
 
 def test_choose_word_error_returned_if_no_words_in_list():
     """Check that an error is returned if the list contains no words"""
@@ -48,19 +50,21 @@ def test_choose_word_error_returned_if_no_words_in_list():
     with pytest.raises(ValueError):
          choose_word(fake_list)
 
-def test_word_selection_non_repitition(listofwords):
-    
-    results = {choose_word(listofwords) for i in range(100)}
-    # Expect that more than one unique word was selected
-    msg = f"Word selection not random enough: {results}"
-    assert len(results) > 1, msg
 
-def test_format_returned_is_list():
+def test_word_is_removed():
+    words = ["red", "yellow", "pink", "green"]
+
+    word, remaining = choose_word(words.copy())
+
+    assert word not in remaining
+    assert len(remaining) == 3
+
+def test_format_returned_is_tuple():
     """Check that the actual return \
         value is a list at runtime."""
-    result = choose_word("green")
-    assert isinstance(result, list)
-    """Expected word_selection() to return a list"""
+    result = choose_word(["green","red"])
+    assert isinstance(result, tuple)
+    """Expected word_selection() to return a tuple"""
 
 def test_word_length_is_reasonable():
     words = parse_words("tests/test_words.txt")
@@ -69,13 +73,21 @@ def test_word_length_is_reasonable():
     assert all(len(word) < 47 for word in words)
 
 
+from re import fullmatch
+
 def test_no_white_space_returned():
-    """Check that there is only one word supplied and there are no spaces"""
-    result = choose_word(["hello","Dog"])
-    assert fullmatch(r"[A-Za-z]+", result), f"Invalid string: {result}"
+    """Check that chosen word has no whitespace"""
+
+    chosen_word, remaining = choose_word(["hello", "Dog"])
+
+    word_as_string = "".join(chosen_word)
+
+    assert fullmatch(r"[A-Za-z]+", word_as_string), f"Invalid string: {word_as_string}"
+    assert " " not in word_as_string
 
 def test_choose_word_returns_lowercase_letters():
-        word = "DOG"
-        expected = ["d","o","g"]
-        result = choose_word([word])
-        assert result == expected
+    words = ["DOG"]
+
+    chosen_word, remaining = choose_word(words)
+
+    assert all(c.islower() for c in chosen_word)

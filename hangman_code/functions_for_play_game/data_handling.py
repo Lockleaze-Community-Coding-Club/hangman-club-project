@@ -1,11 +1,11 @@
-## ADD IN AN ABILITY TO CREATE A GUESSED WORDS LIST FROM PERSISTENCE
+### ADD IN AN ABILITY TO CREATE A GUESSED WORDS LIST FROM PERSISTENCE
 
 
 from json import load, dumps
-from functions_for_play_game.guessed_letters import used_letters_function
-from functions_for_play_game.guessed_letters import guessed_words_function
-from hangman_code.functions_for_play_game.scores_and_attempts_function import remaining_attempts_function
-from hangman_code.functions_for_play_game.scores_and_attempts_function import update_score_function
+from hangman_code.functions_for_play_game.guessed_letters import used_letters_function
+#from hangman_code.functions_for_play_game.guessed_letters import guessed_words_function
+#from hangman_code.functions_for_play_game.scores_and_attempts_function import remaining_attempts_function
+#from hangman_code.functions_for_play_game.scores_and_attempts_function import update_score_function
 from hangman_code.game import Game
 #from hangman_code.functions_for_play_game.player import Player
 
@@ -31,20 +31,20 @@ def update_in_play_data(data, letter,
         used_letters = used_letters_function(letter, data["used_letters"])
         #This will update list of used letters
 
-        words_guessed = guessed_words_function(word_attempt, data["words_guessed"])
+        #words_guessed = guessed_words_function(word_attempt, data["words_guessed"])
         #This will update the list of previously guessed words
 
-        attempts_remaining = remaining_attempts_function(attempts_remaining)
+        #attempts_remaining = remaining_attempts_function(attempts_remaining)
         #This will update the number of remaining attempts
 
-        current_score = update_score_function(current_score)
+        #current_score = update_score_function(current_score)
         #This will update the score value
 
         data["guessed_word"] = word_progress
         data["message"] = message
         data["guess_result"] = guess_result
         data["used_letters"] = used_letters
-        data["words_guessed"] = words_guessed
+        #data["words_guessed"] = words_guessed
         data["attempts_remaining"] = attempts_remaining
         data["current_score"] = current_score
 
@@ -119,3 +119,8 @@ def from_dict(cls, data: dict) -> "Game":
             accepted_letters=data.get("accepted_letters", []),
             game_status=Game.Game_status(data.get("game_status", 0)),
         )
+
+def read_and_find():
+        # This is used in start_game to search on player name and see if
+        # any are still in play
+        return None
