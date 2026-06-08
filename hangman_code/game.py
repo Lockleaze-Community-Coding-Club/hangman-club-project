@@ -1,12 +1,10 @@
-"Defines the class Game that holds details of the game and provides game specific functions"
+"Defines the class self that holds details of the game and provides game specific functions"
 
 from enum import Enum
 class Game:
 
-        class load_game(Enum): 
+        class Game_choice(Enum): 
                 NEW_GAME = 1
-                RESUME_GAME = 2
-                FACTORY_RESET = 3
                 EXIT_GAME = 4
 
         class Game_status(Enum): # RP: I have made a note of this 
@@ -38,48 +36,64 @@ class Game:
                 self.template = template
                 self.message = message
                 self.used_letters = [] if used_letters is None else used_letters
-                self.game_status = [] if game_status is None else game_status
+                if game_status is None:
+                        self.set_game_status(self.Game_status.NEW_GAME)
                 self.accepted_letters = [] if accepted_letters is None else accepted_letters
                 self.attempts_remaining = attempts_remaining
                 self.word_progress = [""] if word_progress is None else word_progress
 
 ### FOR ECERY SINGLE ATTRIBUTE, MAKE A GET AND A SET
 
-def get_game_status(game):
-        return game["current_game_status"]
+        def get_game_status(self):
+                return self["current_game_status"]
 
-def set_game_status(game, game_status):
-        game["game_status"] = game_status
+        def set_game_status(self, game_status):
 
-def get_player_name(game):
-        return game["player_name"]
-    
-def set_player_name(game, player_name):
-        game["player_name"] = player_name
+                self.game_status = game_status
+                if type(game_status) != Game.Game_status:
+                        print("The initial type is", type(game_status),game_status)
+                        raise TypeError
+                       
 
-def get_message(game):
-        return game["message"]
+        def get_player_name(self):
+                return self["player_name"]
+        
+        def set_player_name(self, player_name):
+                self["player_name"] = player_name
 
-def set_message(game,message):
-        game["message"]=message
+        def get_message(self):
+                return self["message"]
 
-def set_word_progress(game,word_progress):
-        game["word_progress"]=word_progress
+        def set_message(self,message):
+                self["message"]=message
 
-def get_attempts_remaining(game):
-        return game["attempts_remaining"]
+        def set_word_progress(self,word_progress):
+                self["word_progress"]=word_progress
 
-def set_attempts_remaining(game,attempts_remaining):
-        game["attempts_remaining"]=attempts_remaining
+        def get_attempts_remaining(self):
+                return self["attempts_remaining"]
 
-def get_current_score(game):
-        return game["current_score"]
+        def set_attempts_remaining(self,attempts_remaining):
+                self["attempts_remaining"]=attempts_remaining
 
-def set_current_score(game,current_score):
-        game["cuurent_score"]=current_score
+        def get_current_score(self):
+                return self["current_score"]
 
-def set_accepted_letters(game,letter):
-        game["accepted_letters"]=game["accepted_letters"].append(letter)
+        def set_current_score(self,current_score):
+                self["cuurent_score"]=current_score
 
-def set_used_letters(game,letter):
-        game["used_letters"]=game["used_letters"].append(letter)
+        def set_accepted_letters(self,letter):
+                self["accepted_letters"]=self["accepted_letters"].append(letter)
+
+        def set_used_letters(self,letter):
+                self["used_letters"]=self["used_letters"].append(letter)
+
+game_status = Game.Game_status.LOST
+my_game = Game(game_status)
+# my_game.set_game_status(Game.Game_status.IN_PLAY)
+my_game.set_game_status(game_status)
+print("my_game object id is",my_game)
+print(my_game.game_status)
+
+
+

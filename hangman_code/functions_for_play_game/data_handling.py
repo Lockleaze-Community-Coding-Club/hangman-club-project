@@ -119,3 +119,8 @@ def from_dict(cls, data: dict) -> "Game":
             accepted_letters=data.get("accepted_letters", []),
             game_status=Game.Game_status(data.get("game_status", 0)),
         )
+
+def read_and_find():
+        # This is used in start_game to search on player name and see if
+        # any are still in play
+        return None

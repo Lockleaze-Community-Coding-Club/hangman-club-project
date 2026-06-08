@@ -20,6 +20,7 @@ from hangman_code.game import (
 
 def play_game(game, letter: str):
         
+        print("hello")
         #-----------get results of guess---------------
         results = make_guess(
                 letter, 

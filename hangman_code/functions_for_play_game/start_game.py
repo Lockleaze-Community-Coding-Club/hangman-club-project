@@ -1,8 +1,14 @@
 #from hangman_code.word_selection import choose_word
-#from hangman_code.game import Game
+from hangman_code.game import Game
 #from hangman_code.functions_for_play_game.data_handling import from_dict
 #from enum import Enum
-
+def load_game(player_name):
+    # Perstistance is checked
+    # If an object exists with game_status 2 AND player name matches, return that object
+    # If such an object does not exist, return a new game object
+   game = Game(player_name = player_name, 
+               game_status= Game.Game_status.NEW_GAME)
+   return game
 
 def new_game (game_status, player_name):
 

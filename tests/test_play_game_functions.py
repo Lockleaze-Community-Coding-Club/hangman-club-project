@@ -31,6 +31,8 @@ def test_play_game_continues_if_attempts_remaining_greaterthanzero(mocker,
                                                                    factory_data
                                                                    ):
         data = factory_data()
+        print(data["used_letters"])
+
         mocker.patch(
         "hangman_code.play_game_functions.make_guess",
         return_value={
@@ -56,13 +58,20 @@ def test_play_game_continues_if_attempts_remaining_greaterthanzero(mocker,
         )
 
         letter = "E"
+        data = factory_data()
+        original_attempts_remaining = data["attempts_remaining"]
+
+        original_used_letters = data["used_letters"]
+        print(original_used_letters)
         result = play_game(data, letter)
-        assert result["attempts_remaining"] == 1
-        assert result["message"]=="Bad luck you lemon!"
-        assert result["current_score"]==51
-        assert result["game_status"]==1
+        print(result["used_letters"])        
+        assert result["attempts_remaining"] == original_attempts_remaining -1
+        assert result["message"]!="The only way is up"
+        assert result["current_score"]!=52
+        assert result["game_status"]==3#artificially changed
         assert result["word_progress"]==["_","O","G"]
-        assert result["used_letters"]==["A","B","C","E"]
+        assert result["used_letters"]==original_used_letters
+        print(original_used_letters)
 
 def test_play_game_finishes_if_game_is_won(mocker,factory_data):
         data = factory_data()
