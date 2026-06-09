@@ -4,7 +4,6 @@ from enum import Enum
 class Game:
 
         class Game_choice(Enum): 
-        class Game_choice(Enum): 
                 NEW_GAME = 1
                 EXIT_GAME = 4
 
@@ -47,6 +46,16 @@ class Game:
 
         def get_game_status(self):
                 return self["current_game_status"]
+
+        def set_score(self, score):
+                if isinstance(score, int):
+                        self.score = score
+                elif score == None:
+                        self.score = 0
+                else:
+                        raise ValueError("score must be an integer")
+                return   
+
 
         def set_game_status(self, game_status):
 

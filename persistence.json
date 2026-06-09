@@ -7,21 +7,21 @@
     "current_score": 0,
     "game_closed": false,
     "game_id": 1,
-    "game_name": "Ronald",
+    "game_name": "ret",
     "game_started": true,
-    "guess_result": false,
+    "guess_result": true,
     "guessed_word": [
-        "_",
+        "C",
         "_",
         "_"
     ],
-    "message": "Bad guess you lemon",
+    "message": "Good job genius",
     "number_of_games_played": 0,
     "number_of_games_won": 0,
     "template": null,
     "used_letters": [
         "",
-        "Q"
+        "C"
     ],
     "word": [
         "C",
