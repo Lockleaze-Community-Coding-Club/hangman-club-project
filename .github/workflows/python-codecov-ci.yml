@@ -351,14 +351,5 @@ jobs:
           gistURL: https://gist.github.com/Rfp21/31c462ebe1d7a75e5a8e367fcb0c538e
           file: test-summary.svg
 
-      - name: Upload test summary to Gist - master branch
-        # Test summary for display on README for main branch
-        uses: andymckay/append-gist-action@6e8d64427fe47cbacf4ab6b890411f1d67c07f3e
-        if: >
-          (github.event_name == 'push' && github.ref == 'refs/heads/master') ||
-          (github.event_name == 'pull_request' && github.base_ref == 'master')
-        with:
-          token: ${{ secrets.GIST_TOKEN }}
-          gistURL: https://gist.github.com/Rfp21/565e2174d18c6a53b22faa4a4c02141a
-          file: test-summary.svg
+
 
