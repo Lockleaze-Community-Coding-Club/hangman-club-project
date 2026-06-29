@@ -1,7 +1,8 @@
+from enum import Enum
 "Defines the class self that holds details of the game and "
 "provides game specific functions"
 
-from enum import Enum
+
 class Game:
 
         class Game_choice(Enum): 
@@ -45,14 +46,14 @@ class Game:
                 self.attempts_remaining = attempts_remaining
                 self.word_progress = [""] if word_progress is None else word_progress
 
-### FOR EVERY SINGLE ATTRIBUTE, THERE IS A GET AND A SET
+# FOR EVERY SINGLE ATTRIBUTE, THERE IS A GET AND A SET
 
         def get_word(self):
                 return self.word
         
         def set_word(self,chosen_word):
                 # This function takes an input of a list and returns a list
-                if type(chosen_word) == list:
+                if isinstance(chosen_word, list):
                         self.word = chosen_word
                         return self.word
                 else:
@@ -62,7 +63,7 @@ class Game:
                 return self.game_id
 
         def set_game_id(self, new_id):
-                if type(new_id) == int:
+                if isinstance(new_id, int):
                         self.game_id = new_id
                         return self.game_id
                 else:
@@ -72,7 +73,7 @@ class Game:
                 return self.current_score
 
         def set_current_score(self,current_score):
-                if type(current_score) == int:
+                if isinstance(current_score, int):
                         self.current_score = current_score
                         return self.current_score
                 else:
@@ -83,7 +84,7 @@ class Game:
         
         def set_player_name(self, player_name):
                 swearlist = ["fuck", "wank", "shit", "cunt"]
-                if type(player_name) == str:
+                if isinstance(player_name, str):
                         if any ([x in player_name for x in swearlist]):
                                 raise ValueError()
                         self.player_name = player_name
@@ -95,7 +96,7 @@ class Game:
                 return self.template
         
         def set_template(self, template_name):
-                if type(template_name) == str:
+                if isinstance(template_name, str):
                         if ".html" in template_name:
                                 self.template = template_name
                                 return self.template.strip()
@@ -109,7 +110,7 @@ class Game:
                 return self.message
 
         def set_message(self,message):
-                if type(message) == str:
+                if isinstance(message, str):
                         self.message = message
                         return self.message.strip().capitalize()
                 else:
@@ -119,7 +120,7 @@ class Game:
                 return self.used_letters       
         
         def set_used_letters(self,letter):
-                if type(letter) == str:
+                if isinstance(letter, str):
                         self.used_letters.append(letter.strip()
                                                  .capitalize()[:1])
                         return self.used_letters
@@ -132,7 +133,7 @@ class Game:
         def set_game_status(self, game_status):
 
                 self.game_status = game_status
-                if type(game_status) == Game.Game_status:
+                if isinstance(game_status,Game.Game_status ):
                         return game_status
                 else:        
                         raise TypeError
@@ -141,7 +142,7 @@ class Game:
                 return self.accepted_letters
 
         def set_accepted_letters(self,letter):
-                if type(letter) == str:
+                if isinstance(letter, str):
                         self.accepted_letters.append(letter.strip()
                                                  .capitalize()[:1])
                         return self.accepted_letters
@@ -152,7 +153,7 @@ class Game:
                 return self.attempts_remaining
 
         def set_attempts_remaining(self,attempts_remaining):
-                if type(attempts_remaining) == int:
+                if isinstance(attempts_remaining, int):
                         if attempts_remaining >= 0:
                                 self.attempts_remaining = attempts_remaining
                                 return self.attempts_remaining
@@ -167,7 +168,7 @@ class Game:
         def set_word_progress(self,word_progress):
                 # This function takes an input of a string and returns a list
                 word_progress_list = []
-                if type(word_progress) == str:
+                if isinstance(word_progress, str):
                         for letter in word_progress:
                                 word_progress_list.append(letter.strip()
                                                           .capitalize())

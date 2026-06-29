@@ -31,7 +31,7 @@ def make_guess(letter, word, word_progress):
         else:
                 raise ValueError
 
-## ADD THESE IN AS UPDATES IN MAKE GUESS
+# ADD THESE IN AS UPDATES IN MAKE GUESS
 
 def remaining_attempts_function(attempts_remaining, letter_found):
        #This function will update the number of remaining attempts left

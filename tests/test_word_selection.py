@@ -1,6 +1,6 @@
+from re import fullmatch
 #This is a test to test the word_selection function
 import pytest
-from re import fullmatch
 from hangman_code.word_selection import choose_word
 from hangman_code.word_selection import parse_words
 #from hangman_code.functions_for_play_game.data_handling import to_dict
