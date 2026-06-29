@@ -1,4 +1,3 @@
-from re import fullmatch
 #This is a test to test the word_selection function
 import pytest
 from hangman_code.word_selection import choose_word

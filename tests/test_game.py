@@ -16,7 +16,7 @@ def test_get_word_returns_formatted_list(factory_data):
        assert isinstance(result,list)
        assert result is not None
        res = any(x.isspace()for x in result)
-       assert res == False
+       assert res is False
 
 def test_set_word_returns_formatted_list(factory_data):
        game = factory_data()
@@ -77,7 +77,7 @@ def test_get_player_name_returns_formatted_str(factory_data):
        assert result is not None
        assert result[0].isupper()
        res = any(char.isspace()for char in result)
-       assert res == False
+       assert res is False
 
 def test_set_player_name_returns_formatted_str(factory_data):
         game = factory_data()
@@ -87,7 +87,7 @@ def test_set_player_name_returns_formatted_str(factory_data):
         assert result != old_player_name
         assert result[0].isupper()
         res = any(char.isspace()for char in result)
-        assert res == False
+        assert res is False
         with pytest.raises(TypeError):
                 game.set_player_name(30)
         
@@ -102,7 +102,7 @@ def test_get_template_returns_formatted_str(factory_data):
        assert isinstance(result,str)
        assert result is not None
        res = any(char.isspace()for char in result)
-       assert res == False
+       assert res is False
        assert ".html" in result
 
 def test_set_template_returns_formatted_str(factory_data):
@@ -112,7 +112,7 @@ def test_set_template_returns_formatted_str(factory_data):
         with pytest.raises(TypeError):
                 game.set_template(123)
         res = any(char.isspace()for char in result)
-        assert res == False
+        assert res is False
         assert ".html" in result
 
 def test_get_message_returns_formatted_str(factory_data):
@@ -138,7 +138,7 @@ def test_get_used_letters_returns_formatted_list(factory_data):
        assert isinstance(result,list)
        assert result is not None
        res = any(x.isspace()for x in result)
-       assert res == False
+       assert res is False
 
 
 def test_set_used_letters_returns_formatted_list(factory_data):
@@ -186,7 +186,7 @@ def test_get_accepted_letters_returns_formatted_list(factory_data):
        assert isinstance(result,list)
        assert result is not None
        res = any(x.isspace()for x in result)
-       assert res == False
+       assert res is False
 
 def test_set_accepted_letters_returns_formatted_list(factory_data):
        game = factory_data()
@@ -235,7 +235,7 @@ def test_get_word_progress_returns_formatted_list(factory_data):
        assert isinstance(result,list)
        assert result is not None
        res = any(x.isspace()for x in result)
-       assert res == False
+       assert res is False
 
 def test_set_word_progress_returns_formatted_list(factory_data):
        game = factory_data()
