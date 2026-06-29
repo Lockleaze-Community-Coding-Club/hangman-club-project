@@ -51,12 +51,12 @@ def test_load_game_returns_a_game_object ():
     assert result != None
     assert type(result) == Game
 
-def test_load_game_returns_expected_dict ():
+def test_load_game_returns_expected_game_attribute ():
     player_name = "Fred"
     result = load_game(player_name)
     assert "Fred" == result.player_name
 
-def test_game_status_returned ():
+def test_load_game_returns_game_status ():
 # Check for any game status' which are IN_PLAY(1)
     player_name = "Fred"
     result = load_game(player_name)
@@ -65,7 +65,7 @@ def test_game_status_returned ():
                                   Game.Game_status.WON,
                                   Game.Game_status.LOST]
 
-def test_search_game_status_in_persistance (factory_data, mocker):
+def test_load_game_searches_game_status_in_persistance (factory_data, mocker):
 # Check for any game status' which are IN_PLAY(1)
     player_name = "Fred"
     persistence = factory_data()

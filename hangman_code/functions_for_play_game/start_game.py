@@ -7,7 +7,7 @@ def load_game(player_name):
     # If an object exists with game_status 2 AND player name matches, return that object
     # If such an object does not exist, return a new game object
    game = Game(player_name = player_name, 
-               game_status= Game.Game_status.NEW_GAME)
+               game_status = Game.Game_status.NEW_GAME)
    return game
 
 def new_game (game_status, player_name):

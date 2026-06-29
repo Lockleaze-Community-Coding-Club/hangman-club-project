@@ -1,4 +1,5 @@
-"Defines the class self that holds details of the game and provides game specific functions"
+"Defines the class self that holds details of the game and "
+"provides game specific functions"
 
 from enum import Enum
 class Game:
@@ -19,8 +20,8 @@ class Game:
                 word: list[str] | None = None,
                 game_id: int | None = None,
                 current_score: int = 0,
-                player_name: str | None = None,
-                template = "index",
+                player_name: str | None = "Enter_name",
+                template = "index.html",
                 message: str = "initial message",
                 used_letters: list[str] | None = None,
                 game_status: Game_status| None = None,
@@ -38,62 +39,144 @@ class Game:
                 self.used_letters = [] if used_letters is None else used_letters
                 if game_status is None:
                         self.set_game_status(self.Game_status.NEW_GAME)
+                else: 
+                        self.game_status = game_status
                 self.accepted_letters = [] if accepted_letters is None else accepted_letters
                 self.attempts_remaining = attempts_remaining
                 self.word_progress = [""] if word_progress is None else word_progress
 
-### FOR ECERY SINGLE ATTRIBUTE, MAKE A GET AND A SET
+### FOR EVERY SINGLE ATTRIBUTE, THERE IS A GET AND A SET
 
+        def get_word(self):
+                return self.word
+        
+        def set_word(self,chosen_word):
+                # This function takes an input of a list and returns a list
+                if type(chosen_word) == list:
+                        self.word = chosen_word
+                        return self.word
+                else:
+                        raise TypeError
+
+        def get_game_id(self):
+                return self.game_id
+
+        def set_game_id(self, new_id):
+                if type(new_id) == int:
+                        self.game_id = new_id
+                        return self.game_id
+                else:
+                        raise TypeError
+        
+        def get_current_score(self):
+                return self.current_score
+
+        def set_current_score(self,current_score):
+                if type(current_score) == int:
+                        self.current_score = current_score
+                        return self.current_score
+                else:
+                        raise TypeError
+                
+        def get_player_name(self):
+                return self.player_name
+        
+        def set_player_name(self, player_name):
+                swearlist = ["fuck", "wank", "shit", "cunt"]
+                if type(player_name) == str:
+                        if any ([x in player_name for x in swearlist]):
+                                raise ValueError()
+                        self.player_name = player_name
+                        return self.player_name.strip().capitalize()                
+                else:
+                        raise TypeError
+
+        def get_template(self):
+                return self.template
+        
+        def set_template(self, template_name):
+                if type(template_name) == str:
+                        if ".html" in template_name:
+                                self.template = template_name
+                                return self.template.strip()
+                        else:
+                                self.template = template_name.__add__(".html")
+                                return self.template.strip() 
+                else:
+                        raise TypeError
+ 
+        def get_message(self):
+                return self.message
+
+        def set_message(self,message):
+                if type(message) == str:
+                        self.message = message
+                        return self.message.strip().capitalize()
+                else:
+                        raise TypeError
+
+        def get_used_letters(self):
+                return self.used_letters       
+        
+        def set_used_letters(self,letter):
+                if type(letter) == str:
+                        self.used_letters.append(letter.strip()
+                                                 .capitalize()[:1])
+                        return self.used_letters
+                else:
+                        raise TypeError
+        
         def get_game_status(self):
-                return self["current_game_status"]
+                return self.game_status
 
         def set_game_status(self, game_status):
 
                 self.game_status = game_status
-                if type(game_status) != Game.Game_status:
-                        print("The initial type is", type(game_status),game_status)
+                if type(game_status) == Game.Game_status:
+                        return game_status
+                else:        
                         raise TypeError
-                       
-
-        def get_player_name(self):
-                return self["player_name"]
         
-        def set_player_name(self, player_name):
-                self["player_name"] = player_name
-
-        def get_message(self):
-                return self["message"]
-
-        def set_message(self,message):
-                self["message"]=message
-
-        def set_word_progress(self,word_progress):
-                self["word_progress"]=word_progress
-
-        def get_attempts_remaining(self):
-                return self["attempts_remaining"]
-
-        def set_attempts_remaining(self,attempts_remaining):
-                self["attempts_remaining"]=attempts_remaining
-
-        def get_current_score(self):
-                return self["current_score"]
-
-        def set_current_score(self,current_score):
-                self["cuurent_score"]=current_score
+        def get_accepted_letters(self):
+                return self.accepted_letters
 
         def set_accepted_letters(self,letter):
-                self["accepted_letters"]=self["accepted_letters"].append(letter)
+                if type(letter) == str:
+                        self.accepted_letters.append(letter.strip()
+                                                 .capitalize()[:1])
+                        return self.accepted_letters
+                else:
+                        raise TypeError
+        
+        def get_attempts_remaining(self):
+                return self.attempts_remaining
 
-        def set_used_letters(self,letter):
-                self["used_letters"]=self["used_letters"].append(letter)
+        def set_attempts_remaining(self,attempts_remaining):
+                if type(attempts_remaining) == int:
+                        if attempts_remaining >= 0:
+                                self.attempts_remaining = attempts_remaining
+                                return self.attempts_remaining
+                        else:
+                                return 0
+                else:
+                        raise TypeError
 
-game_status = Game.Game_status.LOST
-my_game = Game(game_status)
-# my_game.set_game_status(Game.Game_status.IN_PLAY)
-my_game.set_game_status(game_status)
-print("my_game object id is",my_game)
-print(my_game.game_status)
+        def get_word_progress(self):
+                return self.word_progress
+        
+        def set_word_progress(self,word_progress):
+                # This function takes an input of a string and returns a list
+                word_progress_list = []
+                if type(word_progress) == str:
+                        for letter in word_progress:
+                                word_progress_list.append(letter.strip()
+                                                          .capitalize())
+                        self.word_progress = word_progress_list
+                        return self.word_progress
+                else:
+                        raise TypeError
+
+
 
 
 
