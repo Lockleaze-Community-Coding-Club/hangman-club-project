@@ -4,7 +4,8 @@ from hangman_code.game import Game
 #from enum import Enum
 def load_game(player_name):
     # Perstistance is checked
-    # If an object exists with game_status 2 AND player name matches, return that object
+    # If an object exists with game_status 2 AND player name matches, 
+    # return that object
     # If such an object does not exist, return a new game object
    game = Game(player_name = player_name, 
                game_status = Game.Game_status.NEW_GAME)
@@ -14,7 +15,8 @@ def load_game(player_name):
 """ def new_game (game_status, player_name):
 
 
-    game_object = {game_status : 0} # placeholder result until game_object is initialised properly
+    game_object = {game_status : 0} # placeholder result until game_object is 
+    initialised properly
     return game_object
 
 # or 
@@ -32,7 +34,8 @@ def resume_game (game_status):
         #LOST = 3
 
         # Return the game object
-    game_object = {game_status : 1} # placeholder until game_object is initialised properly
+    game_object = {game_status : 1} # placeholder until game_object is 
+    initialised properly
     return game_object """
 
 load_game("Fred")

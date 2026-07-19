@@ -1,4 +1,5 @@
 #This is a test to test the word_selection function
+from re import fullmatch
 import pytest
 from hangman_code.word_selection import choose_word
 from hangman_code.word_selection import parse_words
@@ -72,7 +73,7 @@ def test_word_length_is_reasonable():
     assert all(len(word) < 47 for word in words)
 
 
-from re import fullmatch
+
 
 def test_no_white_space_returned():
     """Check that chosen word has no whitespace"""
