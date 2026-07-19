@@ -4,6 +4,7 @@ def make_guess(letter, word, word_progress):
                 
         word_with_guessed_letters = list(word_progress)
 
+
         if len(word) == len(word_progress):
 
                 

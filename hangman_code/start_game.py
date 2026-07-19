@@ -8,9 +8,10 @@ def load_game(player_name):
     # If such an object does not exist, return a new game object
    game = Game(player_name = player_name, 
                game_status = Game.Game_status.NEW_GAME)
+   print(game.game_status)
    return game
 
-def new_game (game_status, player_name):
+""" def new_game (game_status, player_name):
 
 
     game_object = {game_status : 0} # placeholder result until game_object is initialised properly
@@ -32,6 +33,6 @@ def resume_game (game_status):
 
         # Return the game object
     game_object = {game_status : 1} # placeholder until game_object is initialised properly
-    return game_object
+    return game_object """
 
-
+load_game("Fred")

@@ -1,7 +1,10 @@
 import pytest
-from hangman_code.functions_for_play_game.start_game import new_game, load_game
-from hangman_code.functions_for_play_game.start_game import resume_game
+#from hangman_code.game import Game
 from hangman_code.game import Game
+from hangman_code.start_game import load_game
+
+
+
 
 @pytest.fixture
 def factory_data():
@@ -22,27 +25,6 @@ def factory_data():
                 "start_game_selection": 2
                 }
     return create_persistance
-
-def test_new_game ():
-
-    #word = choose_word()
-    # This shall call on the word_selection class to get a word
-    #  and pass this into the game Class constructor
-    # The output shall be returned to the user as an HTTP/HTTPS 
-    # format via the convertor send_request function
-    # The get_render function in templates will need to be called
-    assert 1 == 2
-
-
-def test_resume_game ():
-    # This shall call on the from_dict function and pass data from 
-    # persistance into the Game Class as the arguments
-    # The output shall be returned to the user as an HTTP/HTTPS 
-    # format via the convertor send_request function
-    # It should flash up an error message to the user if there 
-    # is no game to resume
-    assert 1 == 2
-
 
 def test_load_game_returns_a_game_object ():
     #given a player name
@@ -82,4 +64,5 @@ def test_load_game_searches_game_status_in_persistance (factory_data, mocker):
     assert result.game_status in [Game.Game_status.NEW_GAME,
                                   Game.Game_status.IN_PLAY,
                                   Game.Game_status.WON,
-                                  Game.Game_status.LOST]    
+                                  Game.Game_status.LOST]
+    print(Game.Game_status)

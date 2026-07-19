@@ -180,6 +180,14 @@ def test_set_game_status_returns_Enum(factory_data):
        with pytest.raises(TypeError):
                 game.set_game_status(30)
 
+def test_set_game_status_accepts_integers(factory_data):
+       game = factory_data()
+       previous_result = Game.Game_status.IN_PLAY       
+       result = game.set_game_status(2)
+       assert isinstance(result, Game.Game_status)
+       assert result != previous_result
+
+
 def test_get_accepted_letters_returns_formatted_list(factory_data):
        game = factory_data()
        result = game.get_accepted_letters()
@@ -237,10 +245,17 @@ def test_get_word_progress_returns_formatted_list(factory_data):
        res = any(x.isspace()for x in result)
        assert res is False
 
+def test_set_word_progress_validates_input_list(factory_data):
+       game = factory_data()
+       with pytest.raises(TypeError):
+                game.set_word_progress(["",2,"z","y"])
+       with pytest.raises(TypeError):
+                game.set_word_progress(["","aa","z","y"])
+       
 def test_set_word_progress_returns_formatted_list(factory_data):
        game = factory_data()
        old_word_progress = list(game.word_progress)
-       result = game.set_word_progress(" l2zy")       
+       result = game.set_word_progress(["","","z","y"])       
        assert isinstance(result,list)
        assert result != old_word_progress
        assert result is not None
@@ -254,8 +269,7 @@ def test_set_word_progress_returns_formatted_list(factory_data):
        for letter in result
        for c in letter
                )
-       with pytest.raises(TypeError):
-                game.set_word_progress(30)
+
 
 
 

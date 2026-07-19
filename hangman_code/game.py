@@ -1,15 +1,15 @@
-from enum import Enum
+from enum import IntEnum
 "Defines the class self that holds details of the game and "
 "provides game specific functions"
 
 
 class Game:
 
-        class Game_choice(Enum): 
+        class Game_choice(IntEnum): 
                 NEW_GAME = 1
                 EXIT_GAME = 4
 
-        class Game_status(Enum): # RP: I have made a note of this 
+        class Game_status(IntEnum): # RP: I have made a note of this 
         # in game_status_function
                 NEW_GAME = 0
                 IN_PLAY = 1
@@ -129,14 +129,13 @@ class Game:
         
         def get_game_status(self):
                 return self.game_status
-
+                
         def set_game_status(self, game_status):
-
-                self.game_status = game_status
-                if isinstance(game_status,Game.Game_status ):
-                        return game_status
-                else:        
-                        raise TypeError
+                try:
+                        self.game_status = Game.Game_status(game_status)
+                        return self.game_status
+                except ValueError:
+                    raise TypeError(f"{game_status!r} is not a valid Game_status")
         
         def get_accepted_letters(self):
                 return self.accepted_letters
@@ -166,11 +165,15 @@ class Game:
                 return self.word_progress
         
         def set_word_progress(self,word_progress):
-                # This function takes an input of a string and returns a list
-                word_progress_list = []
-                if isinstance(word_progress, str):
-                        for letter in word_progress:
-                                word_progress_list.append(letter.strip()
+                # This function takes an input of a list and returns a list
+                if isinstance(word_progress, list):
+                        word_progress_list = []
+                        for character in word_progress:
+                                if isinstance(character,int):
+                                        raise TypeError
+                                if len(character) > 1:
+                                        raise TypeError
+                                word_progress_list.append(character.strip()
                                                           .capitalize())
                         self.word_progress = word_progress_list
                         return self.word_progress
