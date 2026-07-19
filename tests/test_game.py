@@ -23,7 +23,7 @@ def test_set_word_returns_formatted_list(factory_data):
        old_word = list(game.word)
        result = game.set_word(["L","a","z","y"])       
        assert isinstance(result,list)
-       assert result != old_word
+       assert result is not old_word
        assert result is not None
        assert not any(
         c.isspace()

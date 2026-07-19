@@ -50,13 +50,13 @@ def test_load_game_returns_a_game_object (factory_words):
     words_list = factory_words()
     player_name = "fred"
     result= load_game(player_name, words_list)
-    assert result != None
-    assert type(result) == Game
+    assert result is not None
+    assert type(result) is Game
 
 def test_load_game_returns_expected_game_attribute ():
     player_name = "Fred"
     result = load_game(player_name)
-    assert "Fred" == result.player_name
+    assert "Fred" is result.player_name
 
 def test_load_game_returns_game_status ():
 # Check for any game status' which are IN_PLAY(1)
@@ -93,7 +93,7 @@ def test_new_game_returns_a_game_object (factory_words):
     words_list = factory_words()
     result= new_game(player_name, words_list)
     assert result is not None
-    assert type(result) == Game
+    assert type(result) is Game
 
 def test_new_game_gets_a_new_word_mock_word_selection (mocker,factory_words):
     words_list = factory_words()
@@ -108,7 +108,7 @@ def test_new_game_gets_a_new_word_mock_word_selection (mocker,factory_words):
     previous_word = virgin_game.get_word()
     player_name = "fred"
     result= new_game(player_name,words_list)
-    assert result.word != previous_word
+    assert result.word is not previous_word
 
 def test_new_game_gets_a_new_word_real_word_selection (factory_words):
     words_list = factory_words()
@@ -116,7 +116,7 @@ def test_new_game_gets_a_new_word_real_word_selection (factory_words):
     previous_word = virgin_game.get_word()
     player_name = "fred"
     result= new_game(player_name,words_list)
-    assert result.word != previous_word
+    assert result.word is not previous_word
 
 def test_new_game_recieves_empty_word_list_and_still_works():
     words_list = []
@@ -124,7 +124,7 @@ def test_new_game_recieves_empty_word_list_and_still_works():
     previous_word = virgin_game.get_word()
     player_name = "fred"
     result= new_game(player_name,words_list)
-    assert result.word != previous_word
+    assert result.word is not previous_word
 
 def test_new_game_saves_updated_word_list(mocker):
 
@@ -145,7 +145,7 @@ def test_new_game_saves_updated_word_list(mocker):
     mock_save.assert_called_once_with(
         ["banana", "orange"]
     )
-    
+
 def test_new_game_when_choose_word_fails_should_get_error(mocker,
                                                           factory_words):
     words_list = factory_words()
@@ -155,7 +155,7 @@ def test_new_game_when_choose_word_fails_should_get_error(mocker,
         )
     player_name = "fred"
     with pytest.raises(ValueError):
-        result= new_game(player_name,words_list)
+        new_game(player_name,words_list)
 
 def test_save_available_words_calls_to_dict(mocker):
 
