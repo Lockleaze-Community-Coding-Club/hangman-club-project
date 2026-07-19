@@ -28,7 +28,8 @@ def choose_word(available_words_list):
 #Examples of how to use the above:
 # In main program:
 
-# initial_words_list = parse_words("C:/Users/john_/Documents/Coding/My Python/Hangman/hangman_words_files/words.txt")
+""" initial_words_list = parse_words("C:/Users/john_/Documents/Coding/
+My Python/Hangman/hangman_words_files/words.txt")"""
 # print(initial_words_list)
 
 # unused_words_list = initial_words_list

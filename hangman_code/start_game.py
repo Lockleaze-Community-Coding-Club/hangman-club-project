@@ -1,7 +1,9 @@
-#from hangman_code.word_selection import choose_word
 from hangman_code.game import Game
+from hangman_code.word_selection import (choose_word,
+                                         parse_words)
 #from hangman_code.functions_for_play_game.data_handling import from_dict
-#from enum import Enum
+from hangman_code.functions_for_play_game.data_handling import to_dict
+
 def load_game(player_name):
     # Perstistance is checked
     # If an object exists with game_status 2 AND player name matches, 
@@ -12,16 +14,28 @@ def load_game(player_name):
    print(game.game_status)
    return game
 
-""" def new_game (game_status, player_name):
+
+def new_game(player_name, available_words_list):
+
+    try:
+        chosen_word, updated_list = choose_word(available_words_list)
+    except:
+        available_words_list = parse_words("hangman_code/words.txt")
+        chosen_word, updated_list = choose_word(available_words_list)
+
+    game = Game(
+        player_name=player_name,
+        word=chosen_word
+    )
+    save_available_words(updated_list)
+    return game
+ 
 
 
-    game_object = {game_status : 0} # placeholder result until game_object is 
-    initialised properly
-    return game_object
+def save_available_words(words):
+    to_dict(words,"available_words_list.json")
 
-# or 
-
-def resume_game (game_status):
+"""def resume_game (game_status):
     
     # Consider that this enum class exists in game.py in the function design
      # You will need to create a object from Game
@@ -38,4 +52,4 @@ def resume_game (game_status):
     initialised properly
     return game_object """
 
-load_game("Fred")
+

@@ -91,8 +91,8 @@ def to_dict(data, json_filename):
                 with open(json_filename, "w") as f:
                         f.write(send_data)
 
-def to_dict(self):
-        """Serialize the game to plain types (for session / JSON)."""
+"""def to_dict(self):
+        Serialize the game to plain types (for session / JSON).
         return {
             "game_id": self.game_id,
             "game_name": self.get_game_name(),
@@ -103,7 +103,7 @@ def to_dict(self):
             "used_letters": self.used_letters,
             "accepted_letters": self.accepted_letters,
             "game_status": self.game_status.value,  # store enum as int
-        }
+        }"""
 
 @classmethod
 def from_dict(cls, data: dict) -> "Game":
