@@ -18,7 +18,10 @@ def test_is_lost():
     # similar to above in reverse
     return None
 
-def test_is_closed(game_closed,key,word_with_guessed_letters,data, json_filename ):
+def test_is_closed(game_closed,key,
+                   word_with_guessed_letters,
+                   data, 
+                   json_filename ):
     #This is a function for if the game is exited:
     #to_dict(key,word_with_guessed_letters,data, json_filename)
 

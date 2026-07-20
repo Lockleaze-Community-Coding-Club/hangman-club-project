@@ -11,7 +11,7 @@ def test_make_guess_fills_all_matching_letters():
         ["A", "B", "A", "C", "U", "S"],
         ["_", "_", "_", "_", "_", "_"],
     )
-    assert test_result["success"] is True
+    assert test_result["letter_found"] is True
     assert test_result["word_progress"] == ["A", "_", "A", "_", "_", "_"]
 
 def test_make_guess_wrong_letter_guess():
@@ -23,7 +23,7 @@ def test_make_guess_wrong_letter_guess():
         ["A", "B", "A", "C", "U", "S"],
         ["_", "_", "_", "_", "_", "_"],
     )
-    assert test_result["success"] is False
+    assert test_result["letter_found"] is False
     assert test_result["word_progress"] == ["_", "_", "_", "_", "_", "_"]
 
 def test_make_guess_different_list_lengths():

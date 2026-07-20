@@ -7,5 +7,6 @@ def test_used_letters_function():
     result = used_letters_function(used_letters, letter)
        #This will make a list of used letters
     assert result == ["x", "c", "l","u"] 
-       #if condition returns true then nothing happens, if false then assertion error is raised
-    return None
+       #if condition returns true then nothing happens, 
+       # if false then assertion error is raised
+

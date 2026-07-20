@@ -1,37 +1,40 @@
 import pytest
 from hangman_code.play_game_functions import play_game
+from hangman_code.game import Game
 
 @pytest.fixture
 def factory_data():
     
     def create_game():
-        return {
-                "player_name": "Ronald",
-                "word": ["D", "O", "G"],
-                "game_id": 42,
-                "current_score": 52,
-                "template": "Resume",
-                "message": "The only way is up",
-                "used_letters": ["A","B","C"],
-                "game_status": 1,
-                "accepted_letters": ["O", "G"],
-                "word_progress": ["_", "O", "G"],
-                "attempts_remaining": 2,
-                "start_game_selection": 2
-                }
+        newgame = Game()
+        newgame.set_player_name("Ronald")
+        newgame.set_word(["D", "O", "G"])
+        newgame.set_game_id(42)
+        newgame.set_current_score(52)
+        newgame.set_template("Resume")
+        newgame.set_message("The only way is up")
+        newgame.set_used_letters("A")
+        newgame.set_used_letters("B")
+        newgame.set_used_letters("C")
+        newgame.set_accepted_letters("O")
+        newgame.set_accepted_letters("G")        
+        newgame.set_word_progress(["_","O","G"])
+        newgame.set_attempts_remaining(2)
+        
+        return newgame 
+
     return create_game
 
-def test_play_game_returns_a_dict(factory_data):
+def test_play_game_returns_a_Game_object(factory_data):
     data = factory_data()
     letter = "E"
     result = play_game(data, letter)
-    assert isinstance(result, dict)
+    assert isinstance(result, Game)
     
 def test_play_game_continues_if_attempts_remaining_greaterthanzero(mocker,
                                                                    factory_data
                                                                    ):
         data = factory_data()
-        print(data["used_letters"])
 
         mocker.patch(
         "hangman_code.play_game_functions.make_guess",
@@ -59,19 +62,18 @@ def test_play_game_continues_if_attempts_remaining_greaterthanzero(mocker,
 
         letter = "E"
         data = factory_data()
-        original_attempts_remaining = data["attempts_remaining"]
+        original_attempts_remaining = Game.get_attempts_remaining(data)
 
-        original_used_letters = data["used_letters"]
-        print(original_used_letters)
+        original_used_letters = Game.get_used_letters(data)
+        
         result = play_game(data, letter)
-        print(result["used_letters"])        
-        assert result["attempts_remaining"] == original_attempts_remaining -1
-        assert result["message"]!="The only way is up"
-        assert result["current_score"]!=52
-        assert result["game_status"]==3#artificially changed
-        assert result["word_progress"]==["_","O","G"]
-        assert result["used_letters"]==original_used_letters
-        print(original_used_letters)
+
+        assert Game.get_attempts_remaining(result) == original_attempts_remaining -1
+        assert Game.get_message(result)!="The only way is up"
+        assert Game.get_current_score(result)!=52
+        assert Game.get_game_status(result)==1
+        assert Game.get_word_progress(result)==["_","O","G"]
+        assert Game.get_used_letters(result)==original_used_letters
 
 def test_play_game_finishes_if_game_is_won(mocker,factory_data):
         data = factory_data()
