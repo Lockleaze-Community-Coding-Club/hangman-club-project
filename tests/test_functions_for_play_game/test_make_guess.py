@@ -37,18 +37,38 @@ def test_make_guess_different_list_lengths():
         ["A", "B", "A", "C", "U", "S"],
         [""])
 
-def test_remaining_attempts():
-    test_attempts = [11, 10, 1, 0, -1]
-    test_result = [20, 20, 20, 20, 20]
-    expected = [10, 9, 0, ValueError, ValueError]
-    for i, x in enumerate(test_attempts):
-        try:
-            result = remaining_attempts_function(x)
-        except Exception as e:
-            result = type(e)
-        test_result[i] = result
-    msg = f"Expected {expected}\n" f"but got {test_result}"
-    assert test_result == expected, msg
+def test_remaining_attempts_letter_not_found():
+    attempts_remaining = 8
+    letter_found = False
+    expected = 7
+    result = remaining_attempts_function(attempts_remaining,letter_found)
+    msg = f"Expected {expected}\n" f"but got {result}"
+    assert result == expected, msg
+
+def test_remaining_attempts_letter_found():
+    attempts_remaining = 8
+    letter_found = True
+    expected = 8
+    result = remaining_attempts_function(attempts_remaining,letter_found)
+    msg = f"Expected {expected}\n" f"but got {result}"
+    assert result == expected, msg
+
+def test_remaining_attempts_is_1_and_letter_not_found():
+    attempts_remaining = 1
+    letter_found = False
+    expected = 0
+    result = remaining_attempts_function(attempts_remaining,letter_found)
+    msg = f"Expected {expected}\n" f"but got {result}"
+    assert result == expected, msg
+
+def test_remaining_attempts_is_0_and_letter_not_found():
+    attempts_remaining = 0
+    letter_found = False
+    expected = ValueError
+    result = remaining_attempts_function(attempts_remaining,letter_found)
+    msg = f"Expected {expected}\n" f"but got {result}"
+    assert result == expected, msg
+
 
 #def test_update_score_function():
        #This function will update the score
