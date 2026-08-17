@@ -44,7 +44,26 @@ def remaining_attempts_function(attempts_remaining, letter_found):
               else:
                       attempts_remaining = ValueError
                       return attempts_remaining
+
               
+#This function is only to be called when the game is over
+#(The number of attempts unused should be an int.  We could solve this with an input validation.)
 def update_score_function(current_score, attempts_remaining):
-       #This function will update the score
-       return current_score
+    match attempts_remaining:
+        case 8:
+            print("Fluke(?)!")
+            new_score = current_score + 100
+        case 7:
+            new_score = current_score + 1000
+        case 6 | 5:
+            new_score = current_score + 800
+        case 4 | 3:
+            new_score = current_score + 500
+        case 2:
+            new_score = current_score + 100
+        case 1:
+            new_score = current_score + 5
+        case _:
+            print("That was close to failure.")
+            new_score = current_score + 1
+    return new_score
