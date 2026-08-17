@@ -27,7 +27,7 @@ class Game:
                 used_letters: list[str] | None = None,
                 game_status: Game_status| None = None,
                 accepted_letters: list[str] | None = None,
-                attempts_remaining: int = 10,
+                attempts_remaining: int = 8,
                 word_progress: list[str] | None = None,
                     ) -> None:
         
