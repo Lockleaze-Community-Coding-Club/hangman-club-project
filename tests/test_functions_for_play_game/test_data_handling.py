@@ -1,11 +1,12 @@
 import pytest
 import json
 from hangman_code.game import Game
-from hangman_code.functions_for_play_game.data_handling import turn_game_into_data
-from hangman_code.functions_for_play_game.data_handling import turn_dict_into_game
-from hangman_code.functions_for_play_game.data_handling import to_dict
-from hangman_code.functions_for_play_game.data_handling import from_dict
-from hangman_code.functions_for_play_game.data_handling import read_and_find
+from hangman_code.functions_for_play_game.data_handling import (
+turn_game_into_data,
+turn_dict_into_game,
+to_dict,
+from_dict,
+read_and_find)
 
 
 @pytest.fixture
@@ -36,7 +37,7 @@ def temp_path(tmp_path):
     def create_file():
         file_path = tmp_path / "test.json"
         return file_path
-    return create_file 
+    return create_file
 
 @pytest.fixture
 def from_dict_fake_data():
@@ -66,7 +67,7 @@ def temp_path_2(tmp_path):
     return create_file
 
 @pytest.fixture
-def from_dict_fake_data_b():
+def fake_data_b():
     def create_dict():
         expected = {
                 "player_name": "Ronald",
@@ -87,7 +88,6 @@ def from_dict_fake_data_b():
 
 def test_turn_game_object_into_dict_sunny_day(factory_data):
     input_data = factory_data()
-    print(type(input_data))
     result = turn_game_into_data(input_data)
     assert type(result) is dict
 
@@ -117,9 +117,9 @@ def test_turn_dict_into_Game_not_dict_returns_error():
     with pytest.raises(ValueError):
             turn_game_into_data(input_data)
 
-def test_turn_dict_into_Game_returns_error_if_keys_are_missing(from_dict_fake_data_b):
+def test_turn_dict_into_Game_returns_error_if_keys_are_missing(fake_data_b):
 # Number of attempts remaining has been deleted
-    fake_game = from_dict_fake_data_b()
+    fake_game = fake_data_b()
     with pytest.raises(ValueError):
         turn_game_into_data(fake_game)
 
@@ -127,7 +127,6 @@ def test_turn_dict_into_Game_returns_error_if_keys_are_missing(from_dict_fake_da
 def test_to_dict_raises_error_if_directory_missing(factory_data):
     location = "missing_dir/file.json"
     data = factory_data()
-
     with pytest.raises(FileNotFoundError):
         to_dict(data, location)
 
@@ -183,7 +182,8 @@ def test_to_dict_allows_overwrites(temp_path, factory_data):
     assert saved["message"] == "Made up test message"
 
 
-def test_to_dict_persists_values_which_are_not_overwritten(temp_path, factory_data):
+def test_to_dict_persists_values_which_are_not_overwritten(temp_path, 
+                                                           factory_data):
     file_path = temp_path()
     input_data = factory_data()
     to_dict(input_data, file_path)
@@ -194,46 +194,52 @@ def test_to_dict_persists_values_which_are_not_overwritten(temp_path, factory_da
     assert saved["game_id"] == 42
 
 
-def test_read_and_find_returns_false_if_player_name_not_present(temp_path, factory_data):
+def test_read_and_find_returns_none_if_player_name_not_present(temp_path, 
+                                                                factory_data):
     file_path = temp_path()
     input_data = factory_data()
     to_dict(input_data, file_path)
     result = read_and_find(file_path, "Fred")
-    expected = False
+    expected = None
     assert result == expected
 
-def test_read_and_find_returns_true_if_player_name_is_present(temp_path, factory_data):
-    file_path = temp_path()
-    input_data = factory_data()
-    to_dict(input_data, file_path)
-    result = read_and_find(file_path, "Ronald")
-    expected = True
-    assert result == expected
-
-def test_read_and_find_returns_true_if_game_status_is_in_play(temp_path, factory_data):
+def test_read_and_find_returns_id_if_player_name_is_present(temp_path, 
+                                                              factory_data):
     file_path = temp_path()
     input_data = factory_data()
     input_data.set_game_status(1)
     to_dict(input_data, file_path)
     result = read_and_find(file_path, "Ronald")
-    expected = True
+    expected = 42
     assert result == expected
 
-def test_read_and_find_returns_false_if_game_status_is_not_in_play(temp_path, factory_data):
+def test_read_and_find_returns_id_if_game_status_is_in_play(temp_path, 
+                                                              factory_data):
+    file_path = temp_path()
+    input_data = factory_data()
+    input_data.set_game_status(1)
+    to_dict(input_data, file_path)
+    result = read_and_find(file_path, "Ronald")
+    expected = 42
+    assert result == expected
+
+def test_read_and_find_returns_false_if_game_is_not_in_play(temp_path, 
+                                                                factory_data):
     file_path = temp_path()
     input_data = factory_data()
     to_dict(input_data, file_path)
     result = read_and_find(file_path, "Ronald")
-    expected = False
+    expected = None
     assert result == expected
 
-def test_read_and_find_returns_false_if_game_status_is_in_play_player_name_not_match(temp_path, factory_data):
+def test_read_and_find_returns_false_if_game_in_play_and_player_name_not_match(
+        temp_path, factory_data):
     file_path = temp_path()
     input_data = factory_data()
     input_data.set_game_status(1)
     to_dict(input_data, file_path)
     result = read_and_find(file_path, "Fred")
-    expected = False
+    expected = None
     assert result == expected
 
 def test_read_and_find_sunny_day(temp_path, factory_data):
@@ -242,7 +248,7 @@ def test_read_and_find_sunny_day(temp_path, factory_data):
     input_data.set_game_status(1)
     to_dict(input_data, file_path)
     result = read_and_find(file_path, "Ronald")
-    expected = False
+    expected = 42
     assert result == expected
 
 def test_check_json_file_is_found_for_from_dict():
@@ -266,10 +272,10 @@ def test_from_dict_basic_functionality(temp_path_2, factory_data):
     expected_id = 42
     assert result.get_game_id() == expected_id
 
-def test_from_dict_returns_error_if_keys_are_missing(temp_path_2, from_dict_fake_data_b):
+def test_from_dict_returns_error_if_keys_are_missing(temp_path_2, fake_data_b):
 # Number of attempts remaining has been deleted
     json_file = temp_path_2()
-    fake_game = from_dict_fake_data_b()
+    fake_game = fake_data_b()
     with open(json_file, "w") as file:
         json.dump(fake_game, file)
     with pytest.raises(KeyError):
@@ -282,12 +288,22 @@ def test_from_dict_raises_error_for_empty_file(temp_path):
     with pytest.raises(ValueError):
         from_dict(file_path, "Ronald")
 
-def test_from_dict_r(temp_path, factory_data):
+def test_from_dict_basic_function(temp_path, factory_data):
     input_data = factory_data()
     file_path = temp_path()
     to_dict(input_data, file_path)
     result = from_dict(file_path, "Ronald")
     assert result.game_id == input_data.game_id
+
+def test_from_dict_player_name_no_match(temp_path, factory_data):
+    input_data = factory_data()
+    file_path = temp_path()
+    to_dict(input_data, file_path)
+    result = from_dict(file_path, "Fred")
+    assert result is None
+## Need to double check how load game works i.e. what input it expects from
+## either from_dict or read_and_find in order to then call a new game
+## i.e. is it None or should I return something else
 
 def test_to_dict_from_dict_round_trip(temp_path, factory_data):
     input_data = factory_data()

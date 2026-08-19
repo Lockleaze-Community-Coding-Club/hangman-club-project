@@ -1,13 +1,6 @@
-### ADD IN AN ABILITY TO CREATE A GUESSED WORDS LIST FROM PERSISTENCE
-
-
 from json import load, dumps
-from hangman_code.functions_for_play_game.guessed_letters import used_letters_function
-#from hangman_code.functions_for_play_game.guessed_letters import guessed_words_function
-#from hangman_code.functions_for_play_game.scores_and_attempts_function import remaining_attempts_function
-#from hangman_code.functions_for_play_game.scores_and_attempts_function import update_score_function
 from hangman_code.game import Game
-#from hangman_code.functions_for_play_game.player import Player
+
 
 def turn_game_into_data(object):
        
@@ -63,11 +56,12 @@ def to_dict(data, json_filename):
 
 def read_and_find(file_path,player_name):
 
-    bool_read_and_find = False
     with open(file_path, "r") as file:
-        json.read(fake_game, file)
-        # This is used in start_game to search on player name and see if
-        # any are still in play
-    #game = Game(player_name = player_name, game_status = Game.Game_status.NEW_GAME)
-    #return game
-    return bool_read_and_find
+        game = load(file)
+        """This is used in start_game to search on player name and see if
+        any are still in play"""
+    if game["player_name"] == player_name and game["game_status"] == 1:
+            result = game["game_id"]
+            return result
+    else:
+            return None
