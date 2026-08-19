@@ -3,16 +3,7 @@ from hangman_code.word_selection import (choose_word,
                                          parse_words)
 #from hangman_code.functions_for_play_game.data_handling import from_dict
 from hangman_code.functions_for_play_game.data_handling import to_dict
-
-def load_game(player_name):
-    # Perstistance is checked
-    # If an object exists with game_status 2 AND player name matches, 
-    # return that object
-    # If such an object does not exist, return a new game object
-   game = Game(player_name = player_name, 
-               game_status = Game.Game_status.NEW_GAME)
-   print(game.game_status)
-   return game
+from hangman_code.functions_for_play_game.data_handling import read_and_find
 
 
 def new_game(player_name, available_words_list):
@@ -27,8 +18,23 @@ def new_game(player_name, available_words_list):
         player_name=player_name,
         word=chosen_word
     )
-    save_available_words(updated_list)
-    return game
+
+
+def load_game(player_name):
+    # Perstistance is checked
+    # If an object exists with game_status 2 AND player name matches, 
+    # return that object
+    # If such an object does not exist, return a new game object
+    game = read_and_find(player_name)
+    if game is type(Game):
+        return game
+    else:
+        game = new_game(player_name)
+        return game
+
+
+
+
  
 
 

@@ -43,13 +43,11 @@ def factory_words():
                 "it",
                 "shit"
         ]
-    return create_available_words_list
+    return create_available_words_list()
 
 def test_load_game_returns_a_game_object (factory_words):
-    #given a player name
-    words_list = factory_words()
     player_name = "fred"
-    result= load_game(player_name, words_list)
+    result= load_game(player_name)
     assert result is not None
     assert type(result) is Game
 
@@ -70,22 +68,20 @@ def test_load_game_returns_game_status ():
 def test_load_game_searches_game_status_in_persistance (factory_data, mocker):
 # Check for any game status' which are IN_PLAY(1)
     player_name = "Fred"
-    persistence = factory_data()
+    #persistence = factory_data()
 
     mocker.patch(
         "hangman_code.start_game.read_and_find",
-        return_value={
-            "letter_found": False,
-            "word_progress": ["_", "O", "G"],
-            "message": "Bad luck you lemon!"
-        },
+        return_value=(
+            Game(game_status = Game.Game_status.NEW_GAME, player_name="Fred")
+        ),
         )
     result = load_game(player_name)
     assert result.game_status in [Game.Game_status.NEW_GAME,
                                   Game.Game_status.IN_PLAY,
                                   Game.Game_status.WON,
                                   Game.Game_status.LOST]
-    print(Game.Game_status)
+
 
 def test_new_game_returns_a_game_object (factory_words):
     #given a player name
